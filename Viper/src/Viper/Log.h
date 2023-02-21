@@ -33,3 +33,4 @@ namespace Viper
 #define VP_WARN(...)				::Viper::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define VP_ERROR(...)			::Viper::Log::GetClientLogger()->error(__VA_ARGS__)
 #define VP_FATAL(...)			::Viper::Log::GetClientLogger()->fatal(__VA_ARGS__)
+
