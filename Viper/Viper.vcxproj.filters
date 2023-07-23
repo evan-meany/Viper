@@ -4,6 +4,9 @@
     <Filter Include="Viper">
       <UniqueIdentifier>{2BB94E0E-97CD-76BF-604F-1A1FCC2273F0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Viper\Events">
+      <UniqueIdentifier>{AF06E937-9B69-78DC-44EF-B0923031445F}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Viper.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Viper\EntryPoint.h">
       <Filter>Viper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Events\ApplicationEvent.h">
+      <Filter>Viper\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Events\Event.h">
+      <Filter>Viper\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Events\KeyEvent.h">
+      <Filter>Viper\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Events\MouseEvent.h">
+      <Filter>Viper\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Log.h">
       <Filter>Viper</Filter>
