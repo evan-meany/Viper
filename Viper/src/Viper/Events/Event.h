@@ -18,6 +18,7 @@ namespace Viper {
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
+	// Use BIT() so an Event can be in multiple Categories
 	enum EventCategory
 	{
 		None = 0,
@@ -28,15 +29,16 @@ namespace Viper {
 		EventCategoryMouseButton = BIT(4)
 	};
 
-#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
-									    virtual EventType GetEventType() const override { return GetStaticType(); }\
-										 virtual const char* GetName() const override { return #type; }
+#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; } \
+							   virtual EventType GetEventType() const override { return GetStaticType(); } \
+							   virtual const char* GetName() const override { return #type; }
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
 	class VIPER_API Event
 	{
 		friend class EventDispatcher;
+
 	public:
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
@@ -47,6 +49,7 @@ namespace Viper {
 		{
 			return GetCategoryFlags() & category;
 		}
+
 	protected:
 		bool m_Handled = false;
 	};
@@ -55,6 +58,7 @@ namespace Viper {
 	{
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
+
 	public:
 		EventDispatcher(Event& event) : m_Event(event) {}
 
@@ -68,6 +72,7 @@ namespace Viper {
 			}
 			return false;
 		}
+
 	private:
 		Event& m_Event;
 	};

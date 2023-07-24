@@ -30,8 +30,7 @@ namespace Viper
 
 // Client log macros
 #define VP_TRACE(...)			::Viper::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define VP_INFO(...)				::Viper::Log::GetClientLogger()->info(__VA_ARGS__)
-#define VP_WARN(...)				::Viper::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define VP_INFO(...)			::Viper::Log::GetClientLogger()->info(__VA_ARGS__)
+#define VP_WARN(...)			::Viper::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define VP_ERROR(...)			::Viper::Log::GetClientLogger()->error(__VA_ARGS__)
 #define VP_FATAL(...)			::Viper::Log::GetClientLogger()->fatal(__VA_ARGS__)
-

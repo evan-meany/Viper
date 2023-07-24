@@ -19,8 +19,7 @@ namespace Viper
 	void Application::Run()
 	{
 		KeyPressedEvent e(7, 0);
-		VP_TRACE(e);
-
+		VP_TRACE(e.GetName());
 		while (true);
 	}
 }

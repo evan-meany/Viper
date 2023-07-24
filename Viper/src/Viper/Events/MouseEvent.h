@@ -23,10 +23,50 @@ namespace Viper {
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved);
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | );
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput);
 
 	private:
 		float m_MouseX, m_MouseY;
 	};
 
+	class VIPER_API MouseButtonEvent : public Event
+	{
+	public:
+		inline int GetMouseButton() const { return m_Button; }
+
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput);
+
+	protected:
+		MouseButtonEvent(int button) : m_Button(button) {}
+
+		int m_Button;
+	};
+
+	class VIPER_API MouseButtonPressedEvent : public MouseButtonEvent
+	{
+		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseButtonPressedEvent: " << m_Button;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseButtonPressed);
+	};
+
+	class VIPER_API MouseButtonReleasedEvent : public MouseButtonEvent
+	{
+		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseButtonPressedEvent: " << m_Button;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseButtonReleased);
+	};
 };
