@@ -34,6 +34,7 @@
     <ClInclude Include="src\Viper\Log.h">
       <Filter>Viper</Filter>
     </ClInclude>
+    <ClInclude Include="src\vppch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Viper\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Viper\Log.cpp">
       <Filter>Viper</Filter>
     </ClCompile>
+    <ClCompile Include="src\vppch.cpp" />
   </ItemGroup>
 </Project>

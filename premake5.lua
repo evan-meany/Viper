@@ -18,6 +18,9 @@ project "Viper"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "vppch.h"
+	pchsource "Viper/src/vppch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

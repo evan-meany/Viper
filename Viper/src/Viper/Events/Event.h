@@ -1,9 +1,8 @@
 #pragma once
 
-#include "Viper/Core.h"
+#include "vppch.h"
 
-#include <string>
-#include <functional>
+#include "Viper/Core.h"
 
 namespace Viper {
 

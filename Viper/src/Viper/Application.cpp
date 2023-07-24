@@ -1,3 +1,4 @@
+#include "vppch.h"
 #include "Application.h"
 
 #include "Events/Event.h"
