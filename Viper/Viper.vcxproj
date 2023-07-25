@@ -79,7 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>vppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>VP_PLATFORM_WINDOWS;VP_BUILD_DLL;VP_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>VP_PLATFORM_WINDOWS;VP_BUILD_DLL;VP_DEBUG;VP_ENABLE_ASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -149,6 +149,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Viper.h" />
     <ClInclude Include="src\Viper\Application.h" />
     <ClInclude Include="src\Viper\Core.h" />
@@ -158,9 +159,11 @@
     <ClInclude Include="src\Viper\Events\KeyEvent.h" />
     <ClInclude Include="src\Viper\Events\MouseEvent.h" />
     <ClInclude Include="src\Viper\Log.h" />
+    <ClInclude Include="src\Viper\Window.h" />
     <ClInclude Include="src\vppch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Viper\Application.cpp" />
     <ClCompile Include="src\Viper\Log.cpp" />
     <ClCompile Include="src\vppch.cpp">

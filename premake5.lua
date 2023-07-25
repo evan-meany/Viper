@@ -48,7 +48,7 @@ project "Viper"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		staticruntime "on"
 		systemversion "latest"
 
 		defines
@@ -63,16 +63,20 @@ project "Viper"
 		}
 
 	filter "configurations:Debug"
-		defines "VP_DEBUG"
-		symbols "On"
+		defines 
+		{
+			"VP_DEBUG",
+			"VP_ENABLE_ASSERTS"
+		}
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "VP_RELEASE"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VP_DIST"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
@@ -101,7 +105,7 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		staticruntime "on"
 		systemversion "latest"
 
 		defines
@@ -111,12 +115,12 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "VP_DEBUG"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "VP_RELEASE"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VP_DIST"
-		optimize "On"
+		optimize "on"
