@@ -12,9 +12,13 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
+IncludeDir["spdlog"] = "Viper/vendor/spdlog/include"
 IncludeDir["GLFW"] = "Viper/vendor/GLFW/include"
+IncludeDir["Glad"] = "Viper/vendor/Glad/include"
 
+-- Include premake5.lua from vendors
 include "Viper/vendor/GLFW"
+include "Viper/vendor/Glad"
 
 project "Viper"
 	location "Viper"
@@ -36,13 +40,15 @@ project "Viper"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.spdlog}",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -63,19 +69,24 @@ project "Viper"
 		}
 
 	filter "configurations:Debug"
+		buildoptions "/MDd"
+		symbols "on"
+
 		defines 
 		{
 			"VP_DEBUG",
-			"VP_ENABLE_ASSERTS"
+			"VP_ENABLE_ASSERTS",
+			"GLFW_INCLUDE_NONE"
 		}
-		symbols "on"
 
 	filter "configurations:Release"
 		defines "VP_RELEASE"
+		buildoptions "/MD"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VP_DIST"
+		buildoptions "/MD"
 		optimize "on"
 
 project "Sandbox"
@@ -115,12 +126,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "VP_DEBUG"
+		buildoptions "/MDd"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "VP_RELEASE"
+		buildoptions "/MD"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VP_DIST"
+		buildoptions "/MD"
 		optimize "on"

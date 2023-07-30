@@ -40,6 +40,12 @@
     <ClInclude Include="src\Viper\Events\MouseEvent.h">
       <Filter>Viper\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\Layer.h">
+      <Filter>Viper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\LayerStack.h">
+      <Filter>Viper</Filter>
+    </ClInclude>
     <ClInclude Include="src\Viper\Log.h">
       <Filter>Viper</Filter>
     </ClInclude>
@@ -53,6 +59,12 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Application.cpp">
+      <Filter>Viper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Layer.cpp">
+      <Filter>Viper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\LayerStack.cpp">
       <Filter>Viper</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Log.cpp">

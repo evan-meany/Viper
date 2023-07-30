@@ -2,6 +2,7 @@
 
 // For use by Viper applications
 #include "Viper/Application.h"
+#include "Viper/Layer.h"
 #include "Viper/Log.h"
 
 // --- Entry Point ---

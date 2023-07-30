@@ -4,6 +4,48 @@
 #include "Event.h"
 
 namespace Viper {
+	class VIPER_API MouseButtonEvent : public Event
+	{
+	public:
+		inline int GetMouseButton() const { return m_Button; }
+
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput);
+
+	protected:
+		MouseButtonEvent(int button) : m_Button(button) {}
+
+		int m_Button;
+	};
+
+	class VIPER_API MouseButtonPressedEvent : public MouseButtonEvent
+	{
+	public:
+		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseButtonPressedEvent: " << m_Button;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseButtonPressed);
+	};
+
+	class VIPER_API MouseButtonReleasedEvent : public MouseButtonEvent
+	{
+	public:
+		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseButtonPressedEvent: " << m_Button;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseButtonReleased);
+	};
 
 	class VIPER_API MouseMovedEvent : public Event
 	{
@@ -28,44 +70,23 @@ namespace Viper {
 		float m_MouseX, m_MouseY;
 	};
 
-	class VIPER_API MouseButtonEvent : public Event
+	class VIPER_API MouseScrolledEvent : public Event
 	{
 	public:
-		inline int GetMouseButton() const { return m_Button; }
+		MouseScrolledEvent(float xOffset, float yOffset) : m_OffsetX(xOffset), m_OffsetY(yOffset)
+		{}
 
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseScrolledEvent: " << m_OffsetX << ", " << m_OffsetY;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseScrolled);
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput);
 
-	protected:
-		MouseButtonEvent(int button) : m_Button(button) {}
-
-		int m_Button;
-	};
-
-	class VIPER_API MouseButtonPressedEvent : public MouseButtonEvent
-	{
-		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
-
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << m_Button;
-			return ss.str();
-		}
-
-		EVENT_CLASS_TYPE(MouseButtonPressed);
-	};
-
-	class VIPER_API MouseButtonReleasedEvent : public MouseButtonEvent
-	{
-		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}
-
-		std::string ToString() const override
-		{
-			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << m_Button;
-			return ss.str();
-		}
-
-		EVENT_CLASS_TYPE(MouseButtonReleased);
+	private:
+		float m_OffsetX, m_OffsetY;
 	};
 };
