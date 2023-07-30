@@ -15,10 +15,12 @@ IncludeDir = {}
 IncludeDir["spdlog"] = "Viper/vendor/spdlog/include"
 IncludeDir["GLFW"] = "Viper/vendor/GLFW/include"
 IncludeDir["Glad"] = "Viper/vendor/Glad/include"
+IncludeDir["ImGui"] = "Viper/vendor/imgui"
 
 -- Include premake5.lua from vendors
 include "Viper/vendor/GLFW"
 include "Viper/vendor/Glad"
+include "Viper/vendor/imgui"
 
 project "Viper"
 	location "Viper"
@@ -42,13 +44,15 @@ project "Viper"
 		"%{prj.name}/src",
 		"%{IncludeDir.spdlog}",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

@@ -5,6 +5,8 @@
 #include "Viper/Layer.h"
 #include "Viper/Log.h"
 
+#include "Viper/ImGui/ImGuiLayer.h"
+
 // --- Entry Point ---
 #include "Viper/EntryPoint.h"
 // -------------------
