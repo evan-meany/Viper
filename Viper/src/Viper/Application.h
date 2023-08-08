@@ -19,7 +19,7 @@ namespace Viper
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
 		
-		void OnEvent(Event& evnt);
+		void OnEvent(Event& e);
 
 		inline static Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }

@@ -83,6 +83,9 @@ namespace Viper {
 			return ss.str();
 		}
 
+		inline float GetXOffset() {return m_OffsetX; }
+		inline float GetYOffset() {return m_OffsetY; }
+
 		EVENT_CLASS_TYPE(MouseScrolled);
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput);
 

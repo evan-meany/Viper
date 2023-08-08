@@ -104,6 +104,13 @@ namespace Viper {
 			}
 		});
 
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int key)
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			KeyTypedEvent typedEvent(key);
+			data.EventCallback(typedEvent);
+		});
+
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -118,7 +125,7 @@ namespace Viper {
 				}
 				case GLFW_RELEASE:
 				{
-					MouseButtonPressedEvent releasedEvent(button);
+					MouseButtonReleasedEvent releasedEvent(button);
 					data.EventCallback(releasedEvent);
 					break;
 				}

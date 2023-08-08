@@ -8,7 +8,6 @@
 
 namespace Viper
 {
-#define BIND_EVENT_FUNC(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
 
@@ -18,10 +17,7 @@ namespace Viper
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FUNC(OnEvent));
-
-		unsigned int id;
-		glGenVertexArrays(1, &id);
+		m_Window->SetEventCallback(VP_BIND_EVENT_FUNC(Application::OnEvent));
 	}
 
 	Application::~Application()
@@ -48,18 +44,18 @@ namespace Viper
 		}
 	}
 
-	void Application::OnEvent(Event& evnt)
+	void Application::OnEvent(Event& e)
 	{
-		EventDispatcher dispatcher(evnt);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(OnWindowClose));
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(VP_BIND_EVENT_FUNC(Application::OnWindowClose));
 
-		VP_CORE_INFO("{0}", evnt);
+		VP_CORE_INFO("{0}", e);
 
 		// Handle layer events from front to back
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
-			(*--it)->OnEvent(evnt);
-			if (evnt.IsHandled()) { break; }
+			(*--it)->OnEvent(e);
+			if (e.IsHandled()) { break; }
 		}
 	}
 
