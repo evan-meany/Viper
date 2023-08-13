@@ -1,5 +1,6 @@
 #include "vppch.h"
 #include "Application.h"
+#include "Input.h"
 
 #include "Events/Event.h"
 #include "Viper/Log.h"
@@ -30,7 +31,7 @@ namespace Viper
 		while (m_Running)
 		{
 			// Reset color of screen
-			glClearColor(1, 0, 1, 1);
+			glClearColor(0.1f, 0.1f, 0.1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			// Render layers from back to front
@@ -48,8 +49,6 @@ namespace Viper
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(VP_BIND_EVENT_FUNC(Application::OnWindowClose));
-
-		VP_CORE_INFO("{0}", e);
 
 		// Handle layer events from front to back
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)

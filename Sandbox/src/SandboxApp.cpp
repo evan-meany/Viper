@@ -7,12 +7,10 @@ public:
 
 	void OnUpdate() override
 	{
-		VP_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(Viper::Event& evnt) override
 	{
-		VP_TRACE("{0}", evnt);
 	}
 };
 

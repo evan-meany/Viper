@@ -14,8 +14,8 @@ namespace Viper {
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "Viper Engine",
-				    unsigned int width = 1200,
-					unsigned int height = 720)
+				      unsigned int width = 1200,
+					   unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 		}
@@ -37,6 +37,9 @@ namespace Viper {
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
+
+		// Expose window
+		virtual void* GetNativeWindow() const = 0;
 
 		// To be implemented per platform
 		static Window* Create(const WindowProps& props = WindowProps());

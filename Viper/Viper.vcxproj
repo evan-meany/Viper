@@ -149,6 +149,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Viper\Input.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Viper.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="src\Viper\Log.h" />
     <ClInclude Include="src\Viper\Window.h" />
     <ClInclude Include="src\vppch.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
@@ -177,6 +179,7 @@
     <ClCompile Include="src\vppch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
