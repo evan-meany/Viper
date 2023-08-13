@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ImGui">
-      <UniqueIdentifier>{C0FF640D-2C14-8DBE-F595-301E616989EF}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
@@ -19,11 +16,11 @@
     <Filter Include="Viper\Events">
       <UniqueIdentifier>{AF06E937-9B69-78DC-44EF-B0923031445F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Viper\ImGui">
+      <UniqueIdentifier>{9522C647-01D8-3E3D-8ACC-3814F6803541}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Viper\ImGui\ImGuiLayer.h">
-      <Filter>ImGui</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
@@ -52,6 +49,9 @@
     <ClInclude Include="src\Viper\Events\MouseEvent.h">
       <Filter>Viper\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\ImGui\ImGuiLayer.h">
+      <Filter>Viper\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Viper\Layer.h">
       <Filter>Viper</Filter>
     </ClInclude>
@@ -67,9 +67,6 @@
     <ClInclude Include="src\vppch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Viper\ImGui\ImGuiLayer.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
@@ -78,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="src\Viper\Application.cpp">
       <Filter>Viper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\ImGui\ImGuiLayer.cpp">
+      <Filter>Viper\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Layer.cpp">
       <Filter>Viper</Filter>

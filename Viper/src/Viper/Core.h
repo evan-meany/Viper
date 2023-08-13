@@ -10,6 +10,10 @@
 	#error Viper only supports Windows
 #endif
 
+#ifdef VP_DEBUG
+	#define VP_ENABLE_ASSERTS
+#endif
+
 #ifdef VP_ENABLE_ASSERTS
 	#define VP_ASSERT(x, ...) { if(!(x)) { VP_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define VP_CORE_ASSERT(x, ...) { if(!(x)) { VP_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }

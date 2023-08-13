@@ -1,5 +1,6 @@
 workspace "Viper"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -26,6 +27,7 @@ project "Viper"
 	location "Viper"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -58,7 +60,6 @@ project "Viper"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "on"
 		systemversion "latest"
 
 		defines
@@ -69,34 +70,35 @@ project "Viper"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "on"
 
 		defines 
 		{
 			"VP_DEBUG",
-			"VP_ENABLE_ASSERTS",
 			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Release"
 		defines "VP_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VP_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -120,7 +122,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "on"
 		systemversion "latest"
 
 		defines
@@ -130,15 +131,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "VP_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
 		defines "VP_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "on"
 
 	filter "configurations:Dist"
 		defines "VP_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "on"
