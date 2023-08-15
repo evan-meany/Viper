@@ -7,3 +7,6 @@
 [submodule "Viper/vendor/imgui"]
 	path = Viper/vendor/imgui
 	url = https://github.com/evan-meany/imgui.git
+[submodule "Viper/vendor/glm"]
+	path = Viper/vendor/glm
+	url = https://github.com/evan-meany/glm.git
