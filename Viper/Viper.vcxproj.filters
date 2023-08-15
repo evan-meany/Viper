@@ -24,6 +24,9 @@
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -52,6 +55,9 @@
     <ClInclude Include="src\Viper\ImGui\ImGuiLayer.h">
       <Filter>Viper\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\Input.h">
+      <Filter>Viper</Filter>
+    </ClInclude>
     <ClInclude Include="src\Viper\Layer.h">
       <Filter>Viper</Filter>
     </ClInclude>
@@ -65,12 +71,15 @@
       <Filter>Viper</Filter>
     </ClInclude>
     <ClInclude Include="src\vppch.h" />
-    <ClInclude Include="src\Viper\Input.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Viper\Keycodes.h" />
+    <ClInclude Include="src\Viper\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
@@ -91,6 +100,5 @@
       <Filter>Viper</Filter>
     </ClCompile>
     <ClCompile Include="src\vppch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

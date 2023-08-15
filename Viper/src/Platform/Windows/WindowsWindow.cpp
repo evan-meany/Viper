@@ -6,7 +6,7 @@
 #include "Viper/Events/MouseEvent.h"
 #include "Viper/Events/KeyEvent.h"
 
-#include <glad/glad.h>
+#include <Glad/glad.h>
 
 namespace Viper {
 

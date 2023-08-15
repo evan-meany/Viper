@@ -149,8 +149,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Viper\Input.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Viper.h" />
     <ClInclude Include="src\Viper\Application.h" />
@@ -161,15 +161,18 @@
     <ClInclude Include="src\Viper\Events\KeyEvent.h" />
     <ClInclude Include="src\Viper\Events\MouseEvent.h" />
     <ClInclude Include="src\Viper\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Viper\Input.h" />
+    <ClInclude Include="src\Viper\Keycodes.h" />
     <ClInclude Include="src\Viper\Layer.h" />
     <ClInclude Include="src\Viper\LayerStack.h" />
     <ClInclude Include="src\Viper\Log.h" />
+    <ClInclude Include="src\Viper\MouseButtonCodes.h" />
     <ClInclude Include="src\Viper\Window.h" />
     <ClInclude Include="src\vppch.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Viper\Application.cpp" />
     <ClCompile Include="src\Viper\ImGui\ImGuiLayer.cpp" />
@@ -179,7 +182,6 @@
     <ClCompile Include="src\vppch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
