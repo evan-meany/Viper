@@ -17,6 +17,7 @@ IncludeDir["spdlog"] = "Viper/vendor/spdlog/include"
 IncludeDir["GLFW"] = "Viper/vendor/GLFW/include"
 IncludeDir["Glad"] = "Viper/vendor/Glad/include"
 IncludeDir["ImGui"] = "Viper/vendor/imgui"
+IncludeDir["glm"] = "Viper/vendor/glm"
 
 -- Include premake5.lua from vendors
 include "Viper/vendor/GLFW"
@@ -38,7 +39,9 @@ project "Viper"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -47,7 +50,8 @@ project "Viper"
 		"%{IncludeDir.spdlog}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -112,6 +116,7 @@ project "Sandbox"
 	includedirs
 	{
 		"Viper/vendor/spdlog/include",
+		"Viper/vendor/glm/glm",
 		"Viper/src"
 	}
 

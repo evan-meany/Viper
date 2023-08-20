@@ -3,7 +3,9 @@
 class ExampleLayer : public Viper::Layer
 {
 public:
-	ExampleLayer() : Layer("Example") {}
+	ExampleLayer() : Layer("Example") 
+	{
+	}
 
 	void OnUpdate() override
 	{
