@@ -6,6 +6,8 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 
+#include "Viper/ImGui/ImGuiLayer.h"
+
 namespace Viper
 {
 	class VIPER_API Application
@@ -28,6 +30,7 @@ namespace Viper
 		bool OnWindowClose(WindowCloseEvent& evnt);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

@@ -23,7 +23,7 @@ namespace Viper {
 		std::vector<Layer*> m_Layers;
 		// m_LayerInsert is the most recent layer position
 		// any layers in the stack after this are overlays
-		std::vector<Layer*>::iterator m_LayerInsert;
+		unsigned int m_LayerInsertIndex = 0;
 	};
 
 } // End namespace Viper

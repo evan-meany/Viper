@@ -19,11 +19,14 @@ namespace Viper
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(VP_BIND_EVENT_FUNC(Application::OnEvent));
+
+		m_ImGuiLayer = new ImGuiLayer;
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
 	{
-
+		// Layers are deleted in LayerStack destructor
 	}
 
 	void Application::Run()
@@ -39,6 +42,14 @@ namespace Viper
 			{
 				layer->OnUpdate();
 			}
+
+			// Render the ImGui layers
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnImGuiRender();
+			}
+			m_ImGuiLayer->End();
 
 			// Poll for and handle events
 			m_Window->OnUpdate();

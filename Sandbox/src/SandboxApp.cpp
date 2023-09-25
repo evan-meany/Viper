@@ -1,10 +1,19 @@
 #include <Viper.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Viper::Layer
 {
 public:
 	ExampleLayer() : Layer("Example") 
 	{
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("EVAN");
+		ImGui::Text("Wassup");
+		ImGui::End();
 	}
 
 	void OnUpdate() override
@@ -37,7 +46,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Viper::ImGuiLayer());
+		// ImGuiLayer automatically added
 	}
 
 	~Sandbox()

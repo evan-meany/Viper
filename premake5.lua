@@ -117,7 +117,8 @@ project "Sandbox"
 	{
 		"Viper/vendor/spdlog/include",
 		"Viper/vendor/glm/glm",
-		"Viper/src"
+		"Viper/src",
+		"Viper/vendor"
 	}
 
 	links
