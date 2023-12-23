@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef VP_PLATFORM_WINDOWS
+#if VP_DYNAMIC_LINK
 	#ifdef VP_BUILD_DLL
 		#define VIPER_API __declspec(dllexport)
 	#else
 		#define VIPER_API __declspec(dllimport)
 	#endif
+#else
+	#define VIPER_API
+#endif
 #else
 	#error Viper only supports Windows
 #endif
