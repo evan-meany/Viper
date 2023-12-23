@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Viper/Window.h"
+#include "Viper/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -31,6 +32,7 @@ namespace Viper {
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

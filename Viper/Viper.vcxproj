@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Viper.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="src\Viper\LayerStack.h" />
     <ClInclude Include="src\Viper\Log.h" />
     <ClInclude Include="src\Viper\MouseButtonCodes.h" />
+    <ClInclude Include="src\Viper\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Viper\Window.h" />
     <ClInclude Include="src\vppch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -577,6 +579,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Viper\Application.cpp" />
