@@ -159,6 +159,7 @@
     <ClInclude Include="src\Viper\Log.h" />
     <ClInclude Include="src\Viper\MouseButtonCodes.h" />
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Viper\Renderer\Shader.h" />
     <ClInclude Include="src\Viper\Window.h" />
     <ClInclude Include="src\vppch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -588,6 +589,7 @@
     <ClCompile Include="src\Viper\Layer.cpp" />
     <ClCompile Include="src\Viper\LayerStack.cpp" />
     <ClCompile Include="src\Viper\Log.cpp" />
+    <ClCompile Include="src\Viper\Renderer\Shader.cpp" />
     <ClCompile Include="src\vppch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

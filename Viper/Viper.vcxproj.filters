@@ -105,6 +105,9 @@
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h">
       <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\Renderer\Shader.h">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Viper\Window.h">
       <Filter>src\Viper</Filter>
     </ClInclude>
@@ -1387,6 +1390,9 @@
     </ClCompile>
     <ClCompile Include="src\Viper\Log.cpp">
       <Filter>src\Viper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Renderer\Shader.cpp">
+      <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\vppch.cpp">
       <Filter>src</Filter>
