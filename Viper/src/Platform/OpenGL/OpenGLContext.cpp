@@ -1,6 +1,5 @@
 #include "vppch.h"
 #include "OpenGLContext.h"
-#include "Viper/Log.h"
 
 #include <GLFW/glfw3.h>
 #include <Glad/glad.h>

@@ -1,7 +1,6 @@
 #include "vppch.h"
 #include "WindowsWindow.h"
 
-#include "Viper/Log.h"
 #include "Viper/Events/ApplicationEvent.h"
 #include "Viper/Events/MouseEvent.h"
 #include "Viper/Events/KeyEvent.h"

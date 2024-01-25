@@ -48,6 +48,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="src\Viper\MouseButtonCodes.h">
       <Filter>src\Viper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Renderer\Buffer.h">
+      <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h">
       <Filter>src\Viper\Renderer</Filter>
@@ -1362,8 +1368,17 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\Renderer\Renderer.h">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1391,11 +1406,20 @@
     <ClCompile Include="src\Viper\Log.cpp">
       <Filter>src\Viper</Filter>
     </ClCompile>
+    <ClCompile Include="src\Viper\Renderer\Buffer.cpp">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Viper\Renderer\Shader.cpp">
       <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\vppch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Renderer\Renderer.cpp">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
