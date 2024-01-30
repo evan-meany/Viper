@@ -4,7 +4,7 @@
 
 #include "Events/Event.h"
 
-#include <Glad/glad.h>
+#include "Renderer/Renderer.h"
 
 namespace Viper
 {
@@ -137,17 +137,18 @@ namespace Viper
 	{
 		while (m_Running)
 		{
-			// Reset color of screen
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1));
+			RenderCommand::Clear();
 
+			Renderer::BeginScene();
+			
 			m_SquareShader->Bind();
-			m_SquareVertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_SquareVertexArray);
 
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
+			
+			Renderer::EndScene();
 
 			// Render layers from back to front
 			for (Layer* layer : m_LayerStack)

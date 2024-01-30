@@ -9,10 +9,10 @@ namespace Viper {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None: 
+		case RendererAPI::API::None: 
 			VP_CORE_ASSERT(false, "RendererAPI cannot be None");
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLVertexBuffer(vertices, size);
 		}
 
@@ -24,10 +24,10 @@ namespace Viper {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 			VP_CORE_ASSERT(false, "RendererAPI cannot be None");
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLIndexBuffer(indices, size);
 		}
 

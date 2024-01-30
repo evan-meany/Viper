@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
@@ -163,7 +164,9 @@
     <ClInclude Include="src\Viper\MouseButtonCodes.h" />
     <ClInclude Include="src\Viper\Renderer\Buffer.h" />
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Viper\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Viper\Renderer\Renderer.h" />
+    <ClInclude Include="src\Viper\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Viper\Renderer\Shader.h" />
     <ClInclude Include="src\Viper\Renderer\VertexArray.h" />
     <ClInclude Include="src\Viper\Window.h" />
@@ -588,6 +591,7 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
@@ -599,7 +603,9 @@
     <ClCompile Include="src\Viper\LayerStack.cpp" />
     <ClCompile Include="src\Viper\Log.cpp" />
     <ClCompile Include="src\Viper\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Viper\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Viper\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Viper\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Viper\Renderer\Shader.cpp" />
     <ClCompile Include="src\Viper\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\vppch.cpp">
