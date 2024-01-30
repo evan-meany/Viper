@@ -111,10 +111,10 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Viper/vendor/spdlog/include",
-		"Viper/vendor/glm/glm",
-		"Viper/src",
-		"Viper/vendor"
+		"%{IncludeDir.spdlog}",
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}",
+		"Viper/src"
 	}
 
 	links

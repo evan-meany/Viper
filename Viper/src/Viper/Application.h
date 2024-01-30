@@ -8,9 +8,10 @@
 
 #include "Viper/ImGui/ImGuiLayer.h"
 
-#include "Viper/Renderer/Shader.h"
+#include "Renderer/Shader.h"
 #include "Renderer/Buffer.h"
 #include "Renderer/VertexArray.h"
+#include "Renderer/OrthographicCamera.h"
 
 namespace Viper
 {
@@ -43,6 +44,8 @@ namespace Viper
 
 		std::shared_ptr<VertexArray> m_SquareVertexArray;
 		std::shared_ptr<Shader> m_SquareShader;
+
+		OrthographicCamera m_Camera;
 
 		static Application* s_Instance;
 	};

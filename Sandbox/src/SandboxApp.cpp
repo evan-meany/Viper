@@ -1,6 +1,6 @@
 #include <Viper.h>
 
-#include "imgui/imgui.h"
+#include <imgui.h>
 
 class ExampleLayer : public Viper::Layer
 {

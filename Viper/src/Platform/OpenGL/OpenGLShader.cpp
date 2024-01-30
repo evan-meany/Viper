@@ -2,6 +2,7 @@
 #include "OpenGLShader.h"
 
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace Viper {
 
@@ -133,4 +134,11 @@ namespace Viper {
 	{
 		glUseProgram(0);
 	}
+
+	void OpenGLShader::UploadUniform(const std::string& name, const glm::mat4& uniform)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(uniform));
+	}
+
 }

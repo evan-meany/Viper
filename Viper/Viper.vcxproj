@@ -164,6 +164,7 @@
     <ClInclude Include="src\Viper\MouseButtonCodes.h" />
     <ClInclude Include="src\Viper\Renderer\Buffer.h" />
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Viper\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Viper\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Viper\Renderer\Renderer.h" />
     <ClInclude Include="src\Viper\Renderer\RendererAPI.h" />
@@ -603,6 +604,7 @@
     <ClCompile Include="src\Viper\LayerStack.cpp" />
     <ClCompile Include="src\Viper\Log.cpp" />
     <ClCompile Include="src\Viper\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Viper\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Viper\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Viper\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Viper\Renderer\RendererAPI.cpp" />

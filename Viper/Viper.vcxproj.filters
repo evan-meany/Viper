@@ -54,6 +54,15 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -111,7 +120,22 @@
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h">
       <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\Renderer\OrthographicCamera.h">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Renderer\RenderCommand.h">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Renderer\Renderer.h">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Renderer\RendererAPI.h">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Viper\Renderer\Shader.h">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Renderer\VertexArray.h">
       <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Window.h">
@@ -1368,33 +1392,21 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Viper\Renderer\Renderer.h">
-      <Filter>src\Viper\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Viper\Renderer\VertexArray.h">
-      <Filter>src\Viper\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Viper\Renderer\RendererAPI.h">
-      <Filter>src\Viper\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Viper\Renderer\RenderCommand.h">
-      <Filter>src\Viper\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1424,32 +1436,26 @@
     <ClCompile Include="src\Viper\Renderer\Buffer.cpp">
       <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Viper\Renderer\Shader.cpp">
-      <Filter>src\Viper\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vppch.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Viper\Renderer\Renderer.cpp">
-      <Filter>src\Viper\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Viper\Renderer\VertexArray.cpp">
-      <Filter>src\Viper\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Viper\Renderer\RendererAPI.cpp">
+    <ClCompile Include="src\Viper\Renderer\OrthographicCamera.cpp">
       <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Renderer\RenderCommand.cpp">
       <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
+    <ClCompile Include="src\Viper\Renderer\Renderer.cpp">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Renderer\RendererAPI.cpp">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Renderer\Shader.cpp">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Renderer\VertexArray.cpp">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vppch.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

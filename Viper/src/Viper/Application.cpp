@@ -1,9 +1,7 @@
 #include "vppch.h"
 #include "Application.h"
 #include "Input.h"
-
 #include "Events/Event.h"
-
 #include "Renderer/Renderer.h"
 
 namespace Viper
@@ -12,6 +10,7 @@ namespace Viper
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
+		: m_Camera(-1.0f, 1.0f, -1.0f, 1.0f)
 	{
 		VP_CORE_ASSERT(!s_Instance, "Application already exists");
 		s_Instance = this;
@@ -52,24 +51,28 @@ namespace Viper
 
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
+
+			uniform mat4 u_ViewProjection;
 
 			void main()
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 			}
 		)";
 
 		std::string fragmentSource = R"(
 			#version 330 core
 
-			layout(location = 0) out vec4 color;
-
 			in vec3 v_Position;
 			in vec4 v_Color;
+
+			layout(location = 0) out vec4 color;
+
 			void main()
 			{
 				color = v_Color;
@@ -105,11 +108,12 @@ namespace Viper
 
 			layout(location = 0) in vec3 a_Position;
 			out vec3 v_Position;
+			uniform mat4 u_ViewProjection;
 
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -117,8 +121,8 @@ namespace Viper
 			#version 330 core
 
 			layout(location = 0) out vec4 color;
-
 			in vec3 v_Position;
+
 			void main()
 			{
 				color = vec4(0.2, 0.3, 0.8, 1.0);
@@ -143,9 +147,11 @@ namespace Viper
 			Renderer::BeginScene();
 			
 			m_SquareShader->Bind();
+			m_SquareShader->UploadUniform("u_ViewProjection", m_Camera.GetViewProjectionMatrix());
 			Renderer::Submit(m_SquareVertexArray);
 
 			m_Shader->Bind();
+			m_Shader->UploadUniform("u_ViewProjection", m_Camera.GetViewProjectionMatrix());
 			Renderer::Submit(m_VertexArray);
 			
 			Renderer::EndScene();
