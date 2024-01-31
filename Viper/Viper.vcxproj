@@ -150,6 +150,7 @@
     <ClInclude Include="src\Viper.h" />
     <ClInclude Include="src\Viper\Application.h" />
     <ClInclude Include="src\Viper\Core.h" />
+    <ClInclude Include="src\Viper\Core\Timestep.h" />
     <ClInclude Include="src\Viper\EntryPoint.h" />
     <ClInclude Include="src\Viper\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Viper\Events\Event.h" />

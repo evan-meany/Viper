@@ -25,7 +25,7 @@ namespace Viper {
 		glm::mat4 m_ViewMatrix;
 		glm::mat4 m_ViewProjectionMatrix;
 
-		glm::vec3 m_Position;
+		glm::vec3 m_Position = glm::vec3(0.0f);
 		float m_Rotation = 0.0f; // for other cameras would use a quaternion or Euler angles
 	};
 

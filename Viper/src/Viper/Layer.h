@@ -2,6 +2,7 @@
 
 #include "Viper/Core.h"
 #include "Viper/Events/Event.h"
+#include "Viper/Core/Timestep.h"
 
 namespace Viper {
 
@@ -13,7 +14,7 @@ namespace Viper {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep timestep) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& e) {}
 

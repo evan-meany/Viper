@@ -57,7 +57,7 @@ namespace Viper {
 	class EventDispatcher
 	{
 		template<typename T>
-		using EventFn = std::function<bool(T&)>;
+		using EventFn = std::function<bool(T&)>; // Return false event if already handled
 
 	public:
 		EventDispatcher(Event& event) : m_Event(event) {}
