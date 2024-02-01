@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Viper/Window.h"
+#include "Viper/Application/Window.h"
 #include "Viper/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

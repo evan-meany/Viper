@@ -12,7 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Viper/Log.h"
+#include "Viper/Log/Log.h"
 
 #ifdef VP_PLATFORM_WINDOWS
 	#include <Windows.h>

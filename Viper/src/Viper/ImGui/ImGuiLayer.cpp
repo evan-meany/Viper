@@ -7,7 +7,7 @@
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_glfw.h"
 
-#include "Viper/Application.h"
+#include "Viper/Application/Application.h"
 
 // TODO: remove these includes
 #include <GLFW/glfw3.h>

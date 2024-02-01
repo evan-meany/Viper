@@ -1,12 +1,13 @@
 #pragma once
 
-#include "Core.h"
 #include "Window.h"
-#include "LayerStack.h"
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
-#include "Viper/ImGui/ImGuiLayer.h"
+
+#include "Viper/Core/Core.h"
 #include "Viper/Core/Timestep.h"
+#include "Viper/Events/Event.h"
+#include "Viper/Events/ApplicationEvent.h"
+#include "Viper/Layer/LayerStack.h"
+#include "Viper/ImGui/ImGuiLayer.h"
 
 namespace Viper
 {
@@ -28,7 +29,7 @@ namespace Viper
 	private:
 		bool OnWindowClose(WindowCloseEvent& evnt);
 	private:
-		std::unique_ptr<Window> m_Window;
+		Unique<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;

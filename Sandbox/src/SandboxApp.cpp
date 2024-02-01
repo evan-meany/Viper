@@ -1,6 +1,7 @@
 #include <Viper.h>
 #include <imgui.h>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class ExampleLayer : public Viper::Layer
 {
@@ -19,7 +20,7 @@ public:
 			0.0f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f
 		};
 
-		std::shared_ptr<Viper::VertexBuffer> vertexBuffer;
+		Viper::Shared<Viper::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Viper::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Viper::BufferLayout layout = {
 			{ Viper::ShaderDataType::Float3, "a_Position" },
@@ -29,7 +30,7 @@ public:
 		m_VertexArray->AddVertexBufffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Viper::IndexBuffer> indexBuffer;
+		Viper::Shared<Viper::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Viper::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBufffer(indexBuffer);
 
@@ -81,13 +82,13 @@ public:
 			-0.5f,  0.5f, 0.0f,
 		};
 
-		std::shared_ptr<Viper::VertexBuffer> squareVertexBuffer;
+		Viper::Shared<Viper::VertexBuffer> squareVertexBuffer;
 		squareVertexBuffer.reset(Viper::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVertexBuffer->SetLayout({ { Viper::ShaderDataType::Float3, "a_Position" } });
 		m_SquareVertexArray->AddVertexBufffer(squareVertexBuffer);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Viper::IndexBuffer> squareIndexBuffer;
+		Viper::Shared<Viper::IndexBuffer> squareIndexBuffer;
 		squareIndexBuffer.reset(Viper::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVertexArray->SetIndexBufffer(squareIndexBuffer);
 
@@ -125,7 +126,9 @@ public:
 	{
 		//static bool show = true;
 		//ImGui::ShowDemoWindow(&show);
-		ImGui::ColorPicker4("Color picker", m_Color);
+		ImGui::Begin("Settings");
+		ImGui::ColorPicker4("", glm::value_ptr(m_Color));
+		ImGui::End();
 	}
 
 	void OnUpdate(Viper::Timestep timestep) override
@@ -158,7 +161,6 @@ public:
 		//material->Set("u_Color", red);
 
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.2f));
-		glm::vec4 red(m_Color[0], m_Color[1], m_Color[2], m_Color[3]);
 		glm::vec4 blue(0.0f, 0.0f, 255.0f, 1.0f);
 		for (uint32_t i = 0; i < 5; i++)
 		{
@@ -167,7 +169,7 @@ public:
 				glm::vec3 pos(i * 0.21f, j * 0.21f, 0.0f);
 				pos += m_SquarePosition;
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				if (i % 2 == 0) { m_SquareShader->UploadUniform("u_Color", red); }
+				if (i % 2 == 0) { m_SquareShader->UploadUniform("u_Color", m_Color); }
 				else { m_SquareShader->UploadUniform("u_Color", blue); }
 				Viper::Renderer::Submit(m_SquareShader, m_SquareVertexArray, transform);
 			}
@@ -187,11 +189,11 @@ public:
 		return false;
 	}
 private:
-	std::shared_ptr<Viper::VertexArray> m_VertexArray;
-	std::shared_ptr<Viper::Shader> m_Shader;
+	Viper::Shared<Viper::VertexArray> m_VertexArray;
+	Viper::Shared<Viper::Shader> m_Shader;
 
-	std::shared_ptr<Viper::VertexArray> m_SquareVertexArray;
-	std::shared_ptr<Viper::Shader> m_SquareShader;
+	Viper::Shared<Viper::VertexArray> m_SquareVertexArray;
+	Viper::Shared<Viper::Shader> m_SquareShader;
 
 	Viper::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition = glm::vec3(0.0f);
@@ -202,7 +204,7 @@ private:
 	glm::vec3 m_SquarePosition = glm::vec3(0.0f);
 	float m_SquarePositionSpeed = 1.0f;
 
-	float m_Color[4] = { 0.0f, 0.0f, 255.0f, 0.0f };
+	glm::vec4 m_Color = { 0.0f, 0.0f, 255.0f, 0.0f };
 };
 
 class Sandbox : public Viper::Application

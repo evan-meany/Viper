@@ -15,7 +15,7 @@ namespace Viper {
 		{
 			s_RendererAPI->Clear();
 		}
-		static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+		static void DrawIndexed(const Shared<VertexArray>& vertexArray)
 		{
 			s_RendererAPI->DrawIndexed(vertexArray);
 		}

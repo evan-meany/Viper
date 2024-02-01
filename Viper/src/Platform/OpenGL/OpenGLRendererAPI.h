@@ -9,7 +9,7 @@ namespace Viper {
 	public:
 		virtual void SetClearColor(glm::vec4& color) override;
 		virtual void Clear() override;
-		virtual void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) override;
+		virtual void DrawIndexed(const Shared<VertexArray>& vertexArray) override;
 	};
 
 }

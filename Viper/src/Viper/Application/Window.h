@@ -1,8 +1,8 @@
 #pragma once
 
-#include "vppch.h"
+// Currently this file is in the Application folder, potentially move this
 
-#include "Viper/Core.h"
+#include "Viper/Core/Core.h"
 #include "Viper/Events/Event.h"
 
 namespace Viper {

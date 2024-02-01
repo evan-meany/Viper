@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Viper/Core.h"
-#include "Viper/Events/Event.h"
+#include "Viper/Core/Core.h"
 #include "Viper/Core/Timestep.h"
+#include "Viper/Events/Event.h"
 
 namespace Viper {
 

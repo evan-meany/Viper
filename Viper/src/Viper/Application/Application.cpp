@@ -1,8 +1,9 @@
 #include "vppch.h"
 #include "Application.h"
-#include "Input.h"
-#include "Events/Event.h"
-#include "Renderer/Renderer.h"
+
+#include "Viper/Input/Input.h"
+#include "Viper/Events/Event.h"
+#include "Viper/Renderer/Renderer.h"
 
 #include <glfw/glfw3.h>
 
@@ -14,7 +15,7 @@ namespace Viper {
 		VP_CORE_ASSERT(!s_Instance, "Application already exists");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window = Unique<Window>(Window::Create());
 		m_Window->SetEventCallback(VP_BIND_EVENT_FUNC(Application::OnEvent));
 
 		m_ImGuiLayer = new ImGuiLayer;

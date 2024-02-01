@@ -1,6 +1,6 @@
 #include "vppch.h"
 #include "WindowsInput.h"
-#include "Viper/Application.h"
+#include "Viper/Application/Application.h"
 
 #include <GLFW/glfw3.h>
 

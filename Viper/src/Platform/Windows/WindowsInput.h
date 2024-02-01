@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Viper/Input.h>
+#include "Viper/Input/Input.h"
 
 namespace Viper {
 

@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Viper/Application/Application.h"
+#include "Viper/Log/Log.h"
+
 #ifdef VP_PLATFORM_WINDOWS
 
 extern Viper::Application* Viper::CreateApplication();

@@ -1,10 +1,10 @@
 #pragma once
 
 #include "vppch.h"
+#include "Viper/Core/Core.h"
 
-#include "Core.h"
-#include "spdlog/spdlog.h"
-#include "spdlog/fmt/ostr.h"
+#include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
 
 namespace Viper
 {
@@ -13,7 +13,7 @@ namespace Viper
 	public:
 		static void Init();
 
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
+		inline static std::shared_ptr<spdlog::logger>&GetCoreLogger() { return s_CoreLogger; }
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
 
 	private:
