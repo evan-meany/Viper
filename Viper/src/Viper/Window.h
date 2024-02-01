@@ -14,8 +14,8 @@ namespace Viper {
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "Viper Engine",
-				    unsigned int width = 500,
-					unsigned int height = 500)
+				    unsigned int width = 1200,
+					unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 		}

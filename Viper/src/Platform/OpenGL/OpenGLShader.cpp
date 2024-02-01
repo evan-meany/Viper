@@ -141,4 +141,10 @@ namespace Viper {
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(uniform));
 	}
 
+	void OpenGLShader::UploadUniform(const std::string& name, const glm::vec4& uniform)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform4f(location, uniform.x, uniform.y, uniform.z, uniform.w);
+	}
+
 }

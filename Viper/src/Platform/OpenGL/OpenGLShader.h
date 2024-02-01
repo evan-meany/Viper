@@ -12,6 +12,7 @@ namespace Viper {
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
 		virtual void UploadUniform(const std::string& name, const glm::mat4& uniform) override;
+		virtual void UploadUniform(const std::string& name, const glm::vec4& uniform) override;
 	private:
 		uint32_t m_RendererID;
 	};

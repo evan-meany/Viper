@@ -16,7 +16,6 @@ namespace Viper {
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(VP_BIND_EVENT_FUNC(Application::OnEvent));
-		//m_Window->SetVSync(false);
 
 		m_ImGuiLayer = new ImGuiLayer;
 		PushOverlay(m_ImGuiLayer);

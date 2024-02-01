@@ -219,8 +219,8 @@ namespace Viper {
       //ImGui::Render();
       //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-      static bool show = true;
-      ImGui::ShowDemoWindow(&show);
+      //static bool show = true;
+      //ImGui::ShowDemoWindow(&show);
    }
 
  } // End namespace Viper
