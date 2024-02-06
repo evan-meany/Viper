@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>vppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;VP_PLATFORM_WINDOWS;VP_BUILD_DLL;GLFW_INCLUDE_NONE;VP_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeaderFile>vppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;VP_PLATFORM_WINDOWS;VP_BUILD_DLL;GLFW_INCLUDE_NONE;VP_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -121,7 +121,7 @@
       <PrecompiledHeaderFile>vppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;VP_PLATFORM_WINDOWS;VP_BUILD_DLL;GLFW_INCLUDE_NONE;VP_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -144,11 +144,13 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Viper.h" />
     <ClInclude Include="src\Viper\Application\Application.h" />
+    <ClInclude Include="src\Viper\Application\Window.h" />
     <ClInclude Include="src\Viper\Core\Core.h" />
     <ClInclude Include="src\Viper\Core\Timestep.h" />
     <ClInclude Include="src\Viper\EntryPoint.h" />
@@ -159,10 +161,10 @@
     <ClInclude Include="src\Viper\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Viper\Input\Input.h" />
     <ClInclude Include="src\Viper\Input\Keycodes.h" />
+    <ClInclude Include="src\Viper\Input\MouseButtonCodes.h" />
     <ClInclude Include="src\Viper\Layer\Layer.h" />
     <ClInclude Include="src\Viper\Layer\LayerStack.h" />
     <ClInclude Include="src\Viper\Log\Log.h" />
-    <ClInclude Include="src\Viper\Input\MouseButtonCodes.h" />
     <ClInclude Include="src\Viper\Renderer\Buffer.h" />
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Viper\Renderer\OrthographicCamera.h" />
@@ -170,8 +172,8 @@
     <ClInclude Include="src\Viper\Renderer\Renderer.h" />
     <ClInclude Include="src\Viper\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Viper\Renderer\Shader.h" />
+    <ClInclude Include="src\Viper\Renderer\Texture.h" />
     <ClInclude Include="src\Viper\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Viper\Application\Window.h" />
     <ClInclude Include="src\vppch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -589,12 +591,15 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="vendor\stb\stb_image.h" />
+    <ClInclude Include="vendor\stb\stb_image_write.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
@@ -610,10 +615,12 @@
     <ClCompile Include="src\Viper\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Viper\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Viper\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Viper\Renderer\Texture.cpp" />
     <ClCompile Include="src\Viper\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\vppch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\stb\stb.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

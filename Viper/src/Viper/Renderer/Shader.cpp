@@ -5,7 +5,7 @@
 
 namespace Viper {
 
-	Shader* Shader::Create(const std::string& vertexSource, 
+	Shared<Shader> Shader::Create(const std::string& vertexSource, 
 			     		   const std::string& fragmentSource)
 	{
 		switch (Renderer::GetAPI())
@@ -14,7 +14,7 @@ namespace Viper {
 			VP_CORE_ASSERT(false, "RendererAPI cannot be None");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return new OpenGLShader(vertexSource, fragmentSource);
+			return std::make_shared<OpenGLShader>(vertexSource, fragmentSource);
 		}
 		
 		VP_CORE_ASSERT(false, "OpenGLShader should not be nullptr");

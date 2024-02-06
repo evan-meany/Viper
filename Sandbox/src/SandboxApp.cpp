@@ -3,16 +3,18 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 class ExampleLayer : public Viper::Layer
 {
 public:
 	ExampleLayer() 
 		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
-		////////////////
-		// First shader
-		////////////////
-		m_VertexArray.reset(Viper::VertexArray::Create());
+		//////////////////
+		// Triangle shader
+		//////////////////
+		m_VertexArray = Viper::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,
@@ -20,8 +22,7 @@ public:
 			0.0f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f
 		};
 
-		Viper::Shared<Viper::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Viper::VertexBuffer::Create(vertices, sizeof(vertices)));
+		auto vertexBuffer = Viper::VertexBuffer::Create(vertices, sizeof(vertices));
 		Viper::BufferLayout layout = {
 			{ Viper::ShaderDataType::Float3, "a_Position" },
 			{ Viper::ShaderDataType::Float4, "a_Color" },
@@ -30,8 +31,7 @@ public:
 		m_VertexArray->AddVertexBufffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		Viper::Shared<Viper::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Viper::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		auto indexBuffer = Viper::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBufffer(indexBuffer);
 
 		std::string vertexSource = R"(
@@ -68,28 +68,27 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Viper::Shader::Create(vertexSource, fragmentSource));
+		m_Shader = Viper::Shader::Create(vertexSource, fragmentSource);
 
 		////////////////
-		// Second shader
+		// Square shader
 		////////////////
-		m_SquareVertexArray.reset(Viper::VertexArray::Create());
+		m_SquareVertexArray = Viper::VertexArray::Create();
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f,
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		Viper::Shared<Viper::VertexBuffer> squareVertexBuffer;
-		squareVertexBuffer.reset(Viper::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-		squareVertexBuffer->SetLayout({ { Viper::ShaderDataType::Float3, "a_Position" } });
+		auto squareVertexBuffer = Viper::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
+		squareVertexBuffer->SetLayout({ { Viper::ShaderDataType::Float3, "a_Position" }, 
+										{ Viper::ShaderDataType::Float2, "a_TextureCoord" } });
 		m_SquareVertexArray->AddVertexBufffer(squareVertexBuffer);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Viper::Shared<Viper::IndexBuffer> squareIndexBuffer;
-		squareIndexBuffer.reset(Viper::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		auto squareIndexBuffer = Viper::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVertexArray->SetIndexBufffer(squareIndexBuffer);
 
 		std::string squareVertexSource = R"(
@@ -110,7 +109,6 @@ public:
 			#version 330 core
 
 			layout(location = 0) out vec4 color;
-
 			uniform vec4 u_Color;
 
 			void main()
@@ -119,7 +117,51 @@ public:
 			}
 		)";
 
-		m_SquareShader.reset(Viper::Shader::Create(squareVertexSource, squareFragmentSource));
+		m_FlatColorShader = Viper::Shader::Create(squareVertexSource, squareFragmentSource);
+
+		////////////////
+		// Texture shader
+		////////////////
+		std::string textureVertexSource = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TextureCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TextureCoord;
+
+			void main()
+			{
+				v_TextureCoord = a_TextureCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+			}
+		)";
+
+		std::string textureFragmentSource = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+
+			uniform sampler2D u_Texture;
+
+			in vec2 v_TextureCoord;
+
+			void main()
+			{
+				color = texture(u_Texture, v_TextureCoord);
+				//color = vec4(v_TextureCoord, 0.0f, 1.0f);
+			}
+		)";
+		m_TextureShader = Viper::Shader::Create(textureVertexSource, textureFragmentSource);
+
+		m_Texture = Viper::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_LogoTexture = Viper::Texture2D::Create("assets/textures/ChernoLogo.png");
+
+		m_TextureShader->Bind();
+		m_TextureShader->UploadUniform("u_Texture", (int)0);
 	}
 
 	virtual void OnImGuiRender() override
@@ -155,23 +197,30 @@ public:
 
 		Viper::Renderer::BeginScene(m_Camera);
 		
-		Viper::Renderer::Submit(m_Shader, m_VertexArray);
+		// Triangle rendering
+		//Viper::Renderer::Submit(m_Shader, m_VertexArray);
 
-		//Viper::MaterialRef material = new Viper::Material(m_SquareShader);
+		//Viper::MaterialRef material = new Viper::Material(m_FlatColorShader);
 		//material->Set("u_Color", red);
 
-		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.2f));
-		glm::vec4 blue(0.0f, 0.0f, 255.0f, 1.0f);
+		// Big square
+		m_Texture->Bind();
+		Viper::Renderer::Submit(m_TextureShader, m_SquareVertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.0f)));
+		m_LogoTexture->Bind();
+		Viper::Renderer::Submit(m_TextureShader, m_SquareVertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.0f)));
+
+		// Little squares
+		std::dynamic_pointer_cast<Viper::OpenGLShader>(m_FlatColorShader)->Bind();
+		std::dynamic_pointer_cast<Viper::OpenGLShader>(m_FlatColorShader)->UploadUniform("u_Color", m_Color);
+		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 		for (uint32_t i = 0; i < 5; i++)
 		{
 			for (uint32_t j = 0; j < 5; j++)
 			{
-				glm::vec3 pos(i * 0.21f, j * 0.21f, 0.0f);
+				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
 				pos += m_SquarePosition;
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				if (i % 2 == 0) { m_SquareShader->UploadUniform("u_Color", m_Color); }
-				else { m_SquareShader->UploadUniform("u_Color", blue); }
-				Viper::Renderer::Submit(m_SquareShader, m_SquareVertexArray, transform);
+				Viper::Renderer::Submit(m_FlatColorShader, m_SquareVertexArray, transform);
 			}
 		}
 
@@ -193,7 +242,12 @@ private:
 	Viper::Shared<Viper::Shader> m_Shader;
 
 	Viper::Shared<Viper::VertexArray> m_SquareVertexArray;
-	Viper::Shared<Viper::Shader> m_SquareShader;
+	Viper::Shared<Viper::Shader> m_FlatColorShader;
+
+	Viper::Shared<Viper::Shader> m_TextureShader;
+
+	Viper::Shared<Viper::Texture2D> m_Texture;
+	Viper::Shared<Viper::Texture2D> m_LogoTexture;
 
 	Viper::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition = glm::vec3(0.0f);
@@ -201,10 +255,10 @@ private:
 	float m_CameraPositionSpeed = 1.0f;
 	float m_CameraRotationSpeed = 90.0f;
 
-	glm::vec3 m_SquarePosition = glm::vec3(0.0f);
+	glm::vec3 m_SquarePosition = glm::vec3(0.5f);
 	float m_SquarePositionSpeed = 1.0f;
 
-	glm::vec4 m_Color = { 0.0f, 0.0f, 255.0f, 0.0f };
+	glm::vec4 m_Color = { 0.8, 0.3f, 0.1f, 1.0f };
 };
 
 class Sandbox : public Viper::Application

@@ -16,11 +16,26 @@
     <Filter Include="src\Viper">
       <UniqueIdentifier>{82C70BB4-EE31-C02A-3770-71D0A3199E7F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Viper\Application">
+      <UniqueIdentifier>{4556EE0B-B1C2-A906-7AB6-4164E6E1CB6E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Viper\Core">
+      <UniqueIdentifier>{1AED3758-06BB-2B5E-EF4E-9C84DBBB07C3}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Viper\Events">
       <UniqueIdentifier>{26AD094B-12A6-289D-3BD8-0D22273008A9}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Viper\ImGui">
       <UniqueIdentifier>{2C56A05F-98E1-0D24-A1F2-90180DFD6924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Viper\Input">
+      <UniqueIdentifier>{0191A15F-6D1C-0F24-762D-9218E2376B24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Viper\Layer">
+      <UniqueIdentifier>{CEDDD05F-3A69-3E24-437A-C118AF849A24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Viper\Log">
+      <UniqueIdentifier>{53D0E2DB-BF90-5E12-88CB-A78FF44AA3EE}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Viper\Renderer">
       <UniqueIdentifier>{689D242B-5481-E580-BDE1-DFD3A9E4CF02}</UniqueIdentifier>
@@ -46,6 +61,9 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb">
+      <UniqueIdentifier>{8BD3C5A8-778B-07F6-E092-E051CC69A2E6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
@@ -58,6 +76,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
@@ -73,10 +94,16 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Application\Application.h">
-      <Filter>src\Viper</Filter>
+      <Filter>src\Viper\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Application\Window.h">
+      <Filter>src\Viper\Application</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Core\Core.h">
-      <Filter>src\Viper</Filter>
+      <Filter>src\Viper\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Core\Timestep.h">
+      <Filter>src\Viper\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\EntryPoint.h">
       <Filter>src\Viper</Filter>
@@ -97,22 +124,22 @@
       <Filter>src\Viper\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Input\Input.h">
-      <Filter>src\Viper</Filter>
+      <Filter>src\Viper\Input</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Input\Keycodes.h">
-      <Filter>src\Viper</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Viper\Layer\Layer.h">
-      <Filter>src\Viper</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Viper\Layer\LayerStack.h">
-      <Filter>src\Viper</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Viper\Log\Log.h">
-      <Filter>src\Viper</Filter>
+      <Filter>src\Viper\Input</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Input\MouseButtonCodes.h">
-      <Filter>src\Viper</Filter>
+      <Filter>src\Viper\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Layer\Layer.h">
+      <Filter>src\Viper\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Layer\LayerStack.h">
+      <Filter>src\Viper\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Log\Log.h">
+      <Filter>src\Viper\Log</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Renderer\Buffer.h">
       <Filter>src\Viper\Renderer</Filter>
@@ -135,11 +162,11 @@
     <ClInclude Include="src\Viper\Renderer\Shader.h">
       <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Viper\Renderer\VertexArray.h">
+    <ClInclude Include="src\Viper\Renderer\Texture.h">
       <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Viper\Application\Window.h">
-      <Filter>src\Viper</Filter>
+    <ClInclude Include="src\Viper\Renderer\VertexArray.h">
+      <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\vppch.h">
       <Filter>src</Filter>
@@ -1392,7 +1419,10 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Viper\Core\Timestep.h" />
+    <ClInclude Include="vendor\stb\stb_image.h">
+      <Filter>vendor\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb\stb_image_write.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1407,6 +1437,9 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1417,7 +1450,7 @@
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Application\Application.cpp">
-      <Filter>src\Viper</Filter>
+      <Filter>src\Viper\Application</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\ImGui\ImGuiBuild.cpp">
       <Filter>src\Viper\ImGui</Filter>
@@ -1426,13 +1459,13 @@
       <Filter>src\Viper\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Layer\Layer.cpp">
-      <Filter>src\Viper</Filter>
+      <Filter>src\Viper\Layer</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Layer\LayerStack.cpp">
-      <Filter>src\Viper</Filter>
+      <Filter>src\Viper\Layer</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Log\Log.cpp">
-      <Filter>src\Viper</Filter>
+      <Filter>src\Viper\Log</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Renderer\Buffer.cpp">
       <Filter>src\Viper\Renderer</Filter>
@@ -1452,11 +1485,17 @@
     <ClCompile Include="src\Viper\Renderer\Shader.cpp">
       <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Viper\Renderer\Texture.cpp">
+      <Filter>src\Viper\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Viper\Renderer\VertexArray.cpp">
       <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\vppch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\stb\stb.cpp">
+      <Filter>vendor\stb</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

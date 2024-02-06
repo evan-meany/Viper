@@ -18,6 +18,8 @@ namespace Viper {
 		m_Window = Unique<Window>(Window::Create());
 		m_Window->SetEventCallback(VP_BIND_EVENT_FUNC(Application::OnEvent));
 
+		Renderer::Init();
+
 		m_ImGuiLayer = new ImGuiLayer;
 		PushOverlay(m_ImGuiLayer);
 	}

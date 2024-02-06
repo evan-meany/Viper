@@ -17,6 +17,7 @@
 
 #include "Viper/Renderer/Renderer.h"
 #include "Viper/Renderer/Shader.h"
+#include "Viper/Renderer/Texture.h"
 #include "Viper/Renderer/Buffer.h"
 #include "Viper/Renderer/VertexArray.h"
 #include "Viper/Renderer/OrthographicCamera.h"

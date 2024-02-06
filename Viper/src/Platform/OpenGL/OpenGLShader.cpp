@@ -135,16 +135,46 @@ namespace Viper {
 		glUseProgram(0);
 	}
 
-	void OpenGLShader::UploadUniform(const std::string& name, const glm::mat4& uniform)
+	void OpenGLShader::UploadUniform(const std::string& name, int uniform)
 	{
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
-		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(uniform));
+		glUniform1i(location, uniform);
 	}
 
+	void OpenGLShader::UploadUniform(const std::string& name, float uniform)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform1f(location, uniform);
+	}	
+	
+	void OpenGLShader::UploadUniform(const std::string& name, const glm::vec2& uniform)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform2f(location, uniform.x, uniform.y);
+	}	
+	
+	void OpenGLShader::UploadUniform(const std::string& name, const glm::vec3& uniform)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform3f(location, uniform.x, uniform.y, uniform.z);
+	}	
+	
 	void OpenGLShader::UploadUniform(const std::string& name, const glm::vec4& uniform)
 	{
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
 		glUniform4f(location, uniform.x, uniform.y, uniform.z, uniform.w);
+	}
+
+	void OpenGLShader::UploadUniform(const std::string& name, const glm::mat3& uniform)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(uniform));
+	}
+
+	void OpenGLShader::UploadUniform(const std::string& name, const glm::mat4& uniform)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(uniform));
 	}
 
 }

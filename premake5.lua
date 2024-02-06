@@ -18,6 +18,7 @@ IncludeDir["GLFW"] = "Viper/vendor/GLFW/include"
 IncludeDir["Glad"] = "Viper/vendor/Glad/include"
 IncludeDir["ImGui"] = "Viper/vendor/imgui"
 IncludeDir["glm"] = "Viper/vendor/glm"
+IncludeDir["stb"] = "Viper/vendor/stb"
 
 -- Include premake5.lua from vendors
 include "Viper/vendor/GLFW"
@@ -42,7 +43,9 @@ project "Viper"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/stb/**.h",
+		"%{prj.name}/vendor/stb/**.cpp"
 	}
 
 	defines
@@ -57,7 +60,8 @@ project "Viper"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb}"
 	}
 
 	links

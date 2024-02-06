@@ -4,8 +4,8 @@
 
 namespace Viper
 {
-	Shared<spdlog::logger> Log::s_CoreLogger;
-	Shared<spdlog::logger> Log::s_ClientLogger;
+	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
+	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 
 	void Log::Init()
 	{
