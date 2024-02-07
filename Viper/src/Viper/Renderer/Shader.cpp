@@ -5,6 +5,21 @@
 
 namespace Viper {
 
+	Shared<Shader> Shader::Create(const std::string& path)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None:
+			VP_CORE_ASSERT(false, "RendererAPI cannot be None");
+			return nullptr;
+		case RendererAPI::API::OpenGL:
+			return std::make_shared<OpenGLShader>(path);
+		}
+
+		VP_CORE_ASSERT(false, "OpenGLShader should not be nullptr");
+		return nullptr;
+	}
+
 	Shared<Shader> Shader::Create(const std::string& vertexSource, 
 			     		   const std::string& fragmentSource)
 	{

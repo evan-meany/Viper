@@ -3,8 +3,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
 class ExampleLayer : public Viper::Layer
 {
 public:
@@ -122,40 +120,7 @@ public:
 		////////////////
 		// Texture shader
 		////////////////
-		std::string textureVertexSource = R"(
-			#version 330 core
-
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TextureCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TextureCoord;
-
-			void main()
-			{
-				v_TextureCoord = a_TextureCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
-		)";
-
-		std::string textureFragmentSource = R"(
-			#version 330 core
-
-			layout(location = 0) out vec4 color;
-
-			uniform sampler2D u_Texture;
-
-			in vec2 v_TextureCoord;
-
-			void main()
-			{
-				color = texture(u_Texture, v_TextureCoord);
-				//color = vec4(v_TextureCoord, 0.0f, 1.0f);
-			}
-		)";
-		m_TextureShader = Viper::Shader::Create(textureVertexSource, textureFragmentSource);
+		m_TextureShader = Viper::Shader::Create("assets/shaders/Texture.glsl");
 
 		m_Texture = Viper::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LogoTexture = Viper::Texture2D::Create("assets/textures/ChernoLogo.png");
@@ -203,15 +168,15 @@ public:
 		//Viper::MaterialRef material = new Viper::Material(m_FlatColorShader);
 		//material->Set("u_Color", red);
 
-		// Big square
+		// Textures
 		m_Texture->Bind();
 		Viper::Renderer::Submit(m_TextureShader, m_SquareVertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.0f)));
 		m_LogoTexture->Bind();
 		Viper::Renderer::Submit(m_TextureShader, m_SquareVertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.0f)));
 
 		// Little squares
-		std::dynamic_pointer_cast<Viper::OpenGLShader>(m_FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<Viper::OpenGLShader>(m_FlatColorShader)->UploadUniform("u_Color", m_Color);
+		m_FlatColorShader->Bind();
+		m_FlatColorShader->UploadUniform("u_Color", m_Color);
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 		for (uint32_t i = 0; i < 5; i++)
 		{

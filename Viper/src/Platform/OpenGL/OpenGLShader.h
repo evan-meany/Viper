@@ -2,10 +2,15 @@
 
 #include "Viper/Renderer/Shader.h"
 
+#include <glad/glad.h>
+
+#include <unordered_map>
+
 namespace Viper {
 	class OpenGLShader : public Shader 
 	{
 	public:
+		OpenGLShader(const std::string& path);
 		OpenGLShader(const std::string& vertexSource,
 					 const std::string& fragmentSource);
 		~OpenGLShader();
@@ -18,6 +23,11 @@ namespace Viper {
 		virtual void UploadUniform(const std::string& name, const glm::vec4& uniform) override;
 		virtual void UploadUniform(const std::string& name, const glm::mat3& uniform) override;
 		virtual void UploadUniform(const std::string& name, const glm::mat4& uniform) override;
+	private:
+		std::string ReadFile(const std::string& path);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		void Compile(const std::unordered_map<GLenum, std::string>& shaderSources);
+	
 	private:
 		uint32_t m_RendererID;
 	};

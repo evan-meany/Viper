@@ -21,6 +21,7 @@ namespace Viper {
 		virtual void UploadUniform(const std::string& name, const glm::mat3& uniform) = 0;
 		virtual void UploadUniform(const std::string& name, const glm::mat4& uniform) = 0;
 
+		static Shared<Shader> Create(const std::string& path);
 		static Shared<Shader> Create(const std::string& vertexSource, const std::string& fragmentSource);
 	};
 
