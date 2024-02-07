@@ -11,11 +11,13 @@ namespace Viper {
 	{
 	public:
 		OpenGLShader(const std::string& path);
-		OpenGLShader(const std::string& vertexSource,
+		OpenGLShader(const std::string& name,
+					 const std::string& vertexSource,
 					 const std::string& fragmentSource);
 		~OpenGLShader();
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
+		virtual const std::string& GetName() const override { return m_Name; }
 		virtual void UploadUniform(const std::string& name, int uniform) override;
 		virtual void UploadUniform(const std::string& name, float uniform) override;
 		virtual void UploadUniform(const std::string& name, const glm::vec2& uniform) override;
@@ -30,5 +32,6 @@ namespace Viper {
 	
 	private:
 		uint32_t m_RendererID;
+		std::string m_Name;
 	};
 }

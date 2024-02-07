@@ -5,6 +5,15 @@
 
 namespace Viper {
 
+	static std::string ExtractNameFromPath(const std::string& path)
+	{
+		auto lastSlash = path.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = path.rfind('.');
+		auto count = lastDot == std::string::npos ? path.size() - lastSlash : lastDot - lastSlash;
+		return path.substr(lastSlash, count);
+	}
+
 	static GLenum ShaderTypeFromString(const std::string& type)
 	{
 		if (type == "vertex") { return GL_VERTEX_SHADER; }
@@ -19,10 +28,13 @@ namespace Viper {
 		std::string source = ReadFile(path);
 		auto shaderSources = PreProcess(source);
 		Compile(shaderSources);
+		m_Name = ExtractNameFromPath(path);
 	}
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSource,
+	OpenGLShader::OpenGLShader(const std::string& name, 
+							   const std::string& vertexSource,
 							   const std::string& fragmentSource)
+		: m_Name(name)
 	{
 		std::unordered_map<GLenum, std::string> shaderSources;
 		shaderSources[GL_VERTEX_SHADER] = vertexSource;

@@ -5,5 +5,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\Texture.glsl" />
+    <None Include="assets\shaders\Triangle.glsl" />
+    <None Include="assets\shaders\Square.glsl" />
   </ItemGroup>
 </Project>
