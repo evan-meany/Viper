@@ -147,7 +147,7 @@
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h">
       <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Viper\Renderer\OrthographicCamera.h">
+    <ClInclude Include="src\Viper\Camera\OrthographicCamera.h">
       <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Renderer\RenderCommand.h">
@@ -1423,6 +1423,9 @@
       <Filter>vendor\stb</Filter>
     </ClInclude>
     <ClInclude Include="vendor\stb\stb_image_write.h" />
+    <ClInclude Include="src\Viper\Camera\OrthographicCameraController.h" />
+    <ClInclude Include="src\Viper\Camera\Camera.h" />
+    <ClInclude Include="src\Viper\Camera\CameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1470,7 +1473,7 @@
     <ClCompile Include="src\Viper\Renderer\Buffer.cpp">
       <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Viper\Renderer\OrthographicCamera.cpp">
+    <ClCompile Include="src\Viper\Camera\OrthographicCamera.cpp">
       <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Renderer\RenderCommand.cpp">
@@ -1497,5 +1500,8 @@
     <ClCompile Include="vendor\stb\stb.cpp">
       <Filter>vendor\stb</Filter>
     </ClCompile>
+    <ClCompile Include="src\Viper\Camera\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Viper\Camera\Camera.cpp" />
+    <ClCompile Include="src\Viper\Camera\CameraController.cpp" />
   </ItemGroup>
 </Project>

@@ -3,6 +3,11 @@
 // For use by Viper applications
 #include "Viper/Application/Application.h"
 
+#include "Viper/Camera/Camera.h"
+#include "Viper/Camera/CameraController.h"
+#include "Viper/Camera/OrthographicCamera.h"
+#include "Viper/Camera/OrthographicCameraController.h"
+
 #include "Viper/Core/Timestep.h"
 
 #include "Viper/Layer/Layer.h"
@@ -20,6 +25,5 @@
 #include "Viper/Renderer/Texture.h"
 #include "Viper/Renderer/Buffer.h"
 #include "Viper/Renderer/VertexArray.h"
-#include "Viper/Renderer/OrthographicCamera.h"
 
 #include "Viper/EntryPoint.h"

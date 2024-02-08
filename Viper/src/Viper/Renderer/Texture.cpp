@@ -1,6 +1,6 @@
 #include "vppch.h"
 #include "Texture.h"
-#include "Renderer.h"
+#include "Viper/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Viper {

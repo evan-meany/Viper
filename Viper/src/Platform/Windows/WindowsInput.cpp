@@ -42,4 +42,17 @@ namespace Viper {
 		return (float)ypos;
 	}
 
+	void WindowsInput::HideCursorImpl(bool hide)
+	{
+		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+		if (hide)
+		{
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		}
+		else
+		{
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		}
+	}
+
 } // End namespace Viper

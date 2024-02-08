@@ -12,6 +12,7 @@ namespace Viper {
 		virtual std::pair<float, float> GetMousePosImpl() override;
 		virtual float GetMouseXImpl() override;
 		virtual float GetMouseYImpl() override;
+		virtual void HideCursorImpl(bool hide) override;
 	};
 
 }

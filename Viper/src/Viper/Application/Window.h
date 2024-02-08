@@ -19,6 +19,7 @@ namespace Viper {
 			: Title(title), Width(width), Height(height)
 		{
 		}
+
 	};
 
 	class VIPER_API Window
@@ -32,6 +33,7 @@ namespace Viper {
 
 		virtual unsigned int GetWidth() const = 0;
 		virtual unsigned int GetHeight() const = 0;
+		virtual float AspectRatio() const = 0;
 		
 		// Window attributes
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;

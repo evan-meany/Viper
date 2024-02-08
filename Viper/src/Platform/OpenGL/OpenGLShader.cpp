@@ -19,7 +19,7 @@ namespace Viper {
 		if (type == "vertex") { return GL_VERTEX_SHADER; }
 		if (type == "fragment" || type == "pixel") { return GL_FRAGMENT_SHADER; }
 
-		VP_CORE_ASSERT(false, "Uknown shader type");
+		VP_CORE_ASSERT(false, "Unknown shader type");
 		return 0;
 	}
 

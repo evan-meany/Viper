@@ -1,7 +1,8 @@
 #pragma once
 
 #include "RenderCommand.h"
-#include "OrthographicCamera.h"
+#include "Viper/Camera/Camera.h"
+#include "Viper/Camera/OrthographicCamera.h"
 #include "Shader.h"
 
 namespace Viper {
@@ -10,6 +11,7 @@ namespace Viper {
 	{
 	public:
 		static void Init();
+		static void BeginScene(Camera& camera);
 		static void BeginScene(OrthographicCamera& camera);
 		static void EndScene();
 		static void Submit(const Shared<Shader>& shader,

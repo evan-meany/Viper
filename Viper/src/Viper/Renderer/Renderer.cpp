@@ -12,6 +12,11 @@ namespace Viper {
 		RenderCommand::Init();
 	}
 
+	void Renderer::BeginScene(Camera& camera)
+	{
+		s_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+	}
+
 	void Renderer::BeginScene(OrthographicCamera& camera)
 	{
 		s_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();

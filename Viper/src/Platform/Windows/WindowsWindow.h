@@ -17,9 +17,16 @@ namespace Viper {
 
 		inline unsigned int GetWidth() const override { return m_Data.Width; }
 		inline unsigned int GetHeight() const override { return m_Data.Height; }
+		inline float AspectRatio() const override 
+		{ 
+			return static_cast<float>(m_Data.Width) / static_cast<float>(m_Data.Height); 
+		}
 
 		// Window attributes
-		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback;  }
+		inline void SetEventCallback(const EventCallbackFn& callback) override 
+		{ 
+			m_Data.EventCallback = callback;
+		}
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 

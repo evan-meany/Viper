@@ -12,6 +12,7 @@ namespace Viper {
 		inline static std::pair<float, float> GetMousePos() { return s_Instance->GetMousePosImpl(); }
 		inline static float GetMouseX() { return s_Instance->GetMouseXImpl(); }
 		inline static float GetMouseY() { return s_Instance->GetMouseYImpl(); }
+		inline static void HideCursor(bool hide = true) { s_Instance->HideCursorImpl(hide); }
 
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) = 0;
@@ -19,6 +20,7 @@ namespace Viper {
 		virtual std::pair<float, float> GetMousePosImpl() = 0;
 		virtual float GetMouseXImpl() = 0;
 		virtual float GetMouseYImpl() = 0;
+		virtual void HideCursorImpl(bool hide) = 0;
 
 	private:
 		static Input* s_Instance;

@@ -6,9 +6,11 @@
 class ExampleLayer : public Viper::Layer
 {
 public:
-	ExampleLayer() 
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
+	ExampleLayer(float aspectRatio) 
+		: Layer("Example"), m_CameraController(aspectRatio)
 	{
+		Viper::Input::HideCursor();
+
 		//////////////////
 		// Triangle shader
 		//////////////////
@@ -48,7 +50,8 @@ public:
 										{ Viper::ShaderDataType::Float2, "a_TextureCoord" } });
 		m_SquareVertexArray->AddVertexBufffer(squareVertexBuffer);
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		auto squareIndexBuffer = Viper::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
+		auto squareIndexBuffer = Viper::IndexBuffer::Create(squareIndices, 
+															sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVertexArray->SetIndexBufffer(squareIndexBuffer);
 		m_SquareShader = Viper::Shader::Create("assets/shaders/Square.glsl");
 
@@ -73,17 +76,10 @@ public:
 
 	void OnUpdate(Viper::Timestep timestep) override
 	{
-		//VP_TRACE("Delta time: {0}s, {1}ms", timestep.GetSeconds(), timestep.GetMilliseconds());
-
-		if (Viper::Input::IsKeyPressed(VP_KEY_A)) { m_CameraPosition.x -= m_CameraPositionSpeed * timestep; }
-		if (Viper::Input::IsKeyPressed(VP_KEY_D)) { m_CameraPosition.x += m_CameraPositionSpeed * timestep; }
-		if (Viper::Input::IsKeyPressed(VP_KEY_W)) { m_CameraPosition.y += m_CameraPositionSpeed * timestep; }
-		if (Viper::Input::IsKeyPressed(VP_KEY_S)) { m_CameraPosition.y -= m_CameraPositionSpeed * timestep; }
-		if (Viper::Input::IsKeyPressed(VP_KEY_R)) { m_CameraRotation -= m_CameraRotationSpeed * timestep; }
-		if (Viper::Input::IsKeyPressed(VP_KEY_T)) { m_CameraPosition = glm::vec3(0.0f); m_CameraRotation = 0.0f; }
-
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
+		if (m_CameraOn)
+		{
+			m_CameraController.OnUpdate(timestep);
+		}
 
 		if (Viper::Input::IsKeyPressed(VP_KEY_LEFT)) { m_SquarePosition.x -= m_SquarePositionSpeed * timestep; }
 		if (Viper::Input::IsKeyPressed(VP_KEY_RIGHT)) { m_SquarePosition.x += m_SquarePositionSpeed * timestep; }
@@ -93,10 +89,10 @@ public:
 		Viper::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1));
 		Viper::RenderCommand::Clear();
 
-		Viper::Renderer::BeginScene(m_Camera);
+		Viper::Renderer::BeginScene(m_CameraController.GetCamera());
 		
 		// Triangle rendering
-		//Viper::Renderer::Submit(m_TriangleShader, m_TriangleVertexArray);
+		Viper::Renderer::Submit(m_TriangleShader, m_TriangleVertexArray);
 
 		//Viper::MaterialRef material = new Viper::Material(m_SquareShader);
 		//material->Set("u_Color", red);
@@ -127,12 +123,20 @@ public:
 
 	void OnEvent(Viper::Event& evnt) override
 	{
+		m_CameraController.OnEvent(evnt);
+
 		Viper::EventDispatcher dispatcher(evnt);
 		dispatcher.Dispatch<Viper::KeyPressedEvent>(VP_BIND_EVENT_FUNC(ExampleLayer::OnKeyPressedEvent));
 	}
 
 	bool OnKeyPressedEvent(Viper::KeyPressedEvent& evnt)
 	{
+		auto keycode = evnt.GetKeyCode();
+		if (keycode == VP_KEY_ESCAPE)
+		{
+			m_CameraOn = false;
+			Viper::Input::HideCursor(false);
+		}
 		return false;
 	}
 private:
@@ -147,11 +151,9 @@ private:
 	Viper::Shared<Viper::Texture2D> m_Texture;
 	Viper::Shared<Viper::Texture2D> m_LogoTexture;
 
-	Viper::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition = glm::vec3(0.0f);
-	float m_CameraRotation = 0.0f;
-	float m_CameraPositionSpeed = 1.0f;
-	float m_CameraRotationSpeed = 90.0f;
+	bool m_CameraOn = true;
+	Viper::CameraController m_CameraController;
+	//Viper::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquarePosition = glm::vec3(0.5f);
 	float m_SquarePositionSpeed = 1.0f;
@@ -164,7 +166,7 @@ class Sandbox : public Viper::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		PushLayer(new ExampleLayer(GetWindow().AspectRatio()));
 		// ImGuiLayer automatically added
 	}
 
