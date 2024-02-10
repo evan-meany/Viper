@@ -13,6 +13,7 @@ namespace Viper {
 		virtual float GetMouseXImpl() override;
 		virtual float GetMouseYImpl() override;
 		virtual void HideCursorImpl(bool hide) override;
+		virtual JoystickData GetJoystickDataImpl(int joystickID) override;
 	};
 
 }

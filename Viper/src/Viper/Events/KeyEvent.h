@@ -1,6 +1,5 @@
 #pragma once
 
-#include "vppch.h"
 #include "Event.h"
 
 namespace Viper {

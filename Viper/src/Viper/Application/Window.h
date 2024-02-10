@@ -25,7 +25,6 @@ namespace Viper {
 	class VIPER_API Window
 	{
 	public:
-		using EventCallbackFn = std::function<void(Event&)>;
 
 		virtual ~Window() {}
 
@@ -44,7 +43,7 @@ namespace Viper {
 		virtual void* GetNativeWindow() const = 0;
 
 		// To be implemented per platform
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Unique<Window> Create(const WindowProps& props = WindowProps());
 	};
 
 } // End namespace Viper

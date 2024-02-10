@@ -6,6 +6,7 @@
 
 namespace Viper {
 
+
 	// Events are blocking rather than buffered
 
 	enum class EventType
@@ -14,18 +15,20 @@ namespace Viper {
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
 		KeyPressed, KeyTyped, KeyReleased,
-		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
+		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled,
+		JoystickConnected
 	};
 
 	// Use BIT() so an Event can be in multiple Categories
 	enum EventCategory
 	{
 		None = 0,
-		EventCategoryApplication = BIT(0),
-		EventCategoryInput       = BIT(1),
-		EventCategoryKeyboard    = BIT(2),
-		EventCategoryMouse       = BIT(3),
-		EventCategoryMouseButton = BIT(4)
+		EventCategoryApplication       = BIT(0),
+		EventCategoryInput             = BIT(1),
+		EventCategoryKeyboard          = BIT(2),
+		EventCategoryMouse             = BIT(3),
+		EventCategoryMouseButton       = BIT(4),
+		EventCategoryJoystick		   = BIT(5)
 	};
 
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; } \
@@ -77,6 +80,7 @@ namespace Viper {
 		Event& m_Event;
 	};
 
+	using EventCallbackFn = std::function<void(Event&)>;
 
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)
 	{

@@ -1426,6 +1426,11 @@
     <ClInclude Include="src\Viper\Camera\OrthographicCameraController.h" />
     <ClInclude Include="src\Viper\Camera\Camera.h" />
     <ClInclude Include="src\Viper\Camera\CameraController.h" />
+    <ClInclude Include="src\Viper\Input\JoystickCodes.h" />
+    <ClInclude Include="src\Viper\Events\JoystickEvent.h" />
+    <ClInclude Include="src\Viper\Input\JoystickManager.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsJoystickManager.h" />
+    <ClInclude Include="src\Viper\GLFW\GLFWManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1503,5 +1508,9 @@
     <ClCompile Include="src\Viper\Camera\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Viper\Camera\Camera.cpp" />
     <ClCompile Include="src\Viper\Camera\CameraController.cpp" />
+    <ClCompile Include="src\Viper\Application\Window.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsJoystickManager.cpp" />
+    <ClCompile Include="src\Viper\GLFW\GLFWManager.cpp" />
+    <ClCompile Include="src\Viper\Input\JoystickManager.cpp" />
   </ItemGroup>
 </Project>

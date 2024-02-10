@@ -55,4 +55,17 @@ namespace Viper {
 		}
 	}
 
+	JoystickData WindowsInput::GetJoystickDataImpl(int joystickID)
+	{
+		JoystickData joystickData;
+		int count;
+		const float* axes = glfwGetJoystickAxes(joystickID, &count);
+		if (count == 0) { VP_CORE_ASSERT("No data for joystick {0}", joystickID); }
+		joystickData.LeftStickX = axes[0];
+		joystickData.LeftStickY = axes[1];
+		joystickData.RightStickX = axes[2];
+		joystickData.RightStickY = axes[3];
+		return joystickData;
+	}
+
 } // End namespace Viper

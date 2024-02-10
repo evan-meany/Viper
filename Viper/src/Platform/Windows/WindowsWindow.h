@@ -7,6 +7,11 @@
 
 namespace Viper {
 
+	/*
+	Note that WindowsWindow currently assumes that there is only one window instance
+	that exists for the application. If this were to ever change I would need to create
+	some sort of manager to handle things like controllers separate those from the window
+	*/
 	class WindowsWindow : public Window
 	{
 	public:
@@ -50,7 +55,6 @@ namespace Viper {
 
 			EventCallbackFn EventCallback;
 		};
-
 		WindowData m_Data;
 	};
 

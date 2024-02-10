@@ -24,8 +24,10 @@ namespace Viper{
 		float m_CameraTranslationSpeed = 0.4f;
 		float m_CameraTranslationSpeedMax = 1.5f;
 		float m_CameraRotationSpeed = 2.0f;
-		float m_LastXPosition;
-		float m_LastYPosition;
+		float m_LastMouseXPosition;
+		float m_LastMouseYPosition;
+		float m_LastJoystickRightXPosition = 0.0f;
+		float m_LastJoystickRightYPosition = 0.0f;
 	};
 
 }

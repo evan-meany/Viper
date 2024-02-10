@@ -4,22 +4,11 @@
 #include "Viper/Events/ApplicationEvent.h"
 #include "Viper/Events/MouseEvent.h"
 #include "Viper/Events/KeyEvent.h"
+#include "Viper/GLFW/GLFWManager.h"
 
 #include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Viper {
-
-	static bool s_GLFWInitialized = false;
-
-	static void GLFWErrorCallback(int error, const char* desciption)
-	{
-		VP_CORE_ERROR("GLFW Error {0}: {1}", error, desciption);
-	}
-
-	Window* Window::Create(const WindowProps& props)
-	{
-		return new WindowsWindow(props);
-	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
@@ -39,14 +28,8 @@ namespace Viper {
 
 		VP_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
-		if (!s_GLFWInitialized)
-		{
-			//TODO : glfwTerminate on system shutdown
-			int success = glfwInit();
-			VP_CORE_ASSERT(success, "Could not initialize GLFW!");
-			glfwSetErrorCallback(GLFWErrorCallback);
-			s_GLFWInitialized = true;
-		}
+		// Initialize GLFW if not already initialized
+		if (!GLFWManager::Get()) { GLFWManager::Init(); }
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		
@@ -58,6 +41,8 @@ namespace Viper {
 		SetVSync(true);
 
 		// Setup GLFW event callbacks
+
+		// WINDOW Events
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -74,6 +59,7 @@ namespace Viper {
 			data.EventCallback(closeEvent);
 		});
 
+		// KEYBOARD Events
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -111,7 +97,8 @@ namespace Viper {
 			KeyTypedEvent typedEvent(key);
 			data.EventCallback(typedEvent);
 		});
-
+		
+		// MOUSE Events
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -150,6 +137,7 @@ namespace Viper {
 			MouseScrolledEvent scrolledEvent((float)xOffset, (float)yOffset);
 			data.EventCallback(scrolledEvent);
 		});
+
 	}
 
 	void WindowsWindow::Shutdown()
@@ -159,7 +147,6 @@ namespace Viper {
 
 	void WindowsWindow::OnUpdate()
 	{
-		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
 

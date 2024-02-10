@@ -8,6 +8,7 @@
 #include "Viper/Events/ApplicationEvent.h"
 #include "Viper/Layer/LayerStack.h"
 #include "Viper/ImGui/ImGuiLayer.h"
+#include "Viper/Input/JoystickManager.h"
 
 namespace Viper
 {
@@ -30,6 +31,7 @@ namespace Viper
 		bool OnWindowClose(WindowCloseEvent& evnt);
 	private:
 		Unique<Window> m_Window;
+		Unique<JoystickManager> m_JoystickManager;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;

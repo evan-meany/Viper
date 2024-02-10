@@ -4,6 +4,7 @@
 #include "Viper/Input/Input.h"
 #include "Viper/Events/Event.h"
 #include "Viper/Renderer/Renderer.h"
+#include "Viper/GLFW/GLFWManager.h"
 
 #include <glfw/glfw3.h>
 
@@ -15,8 +16,11 @@ namespace Viper {
 		VP_CORE_ASSERT(!s_Instance, "Application already exists");
 		s_Instance = this;
 
-		m_Window = Unique<Window>(Window::Create());
+		m_Window = Window::Create();
 		m_Window->SetEventCallback(VP_BIND_EVENT_FUNC(Application::OnEvent));
+
+		JoystickManager::Create();
+		JoystickManager::SetEventCallback(VP_BIND_EVENT_FUNC(Application::OnEvent));
 
 		Renderer::Init();
 
@@ -53,6 +57,7 @@ namespace Viper {
 			m_ImGuiLayer->End();
 
 			// Poll for and handle events
+			GLFWManager::OnUpdate();
 			m_Window->OnUpdate();
 		}
 	}

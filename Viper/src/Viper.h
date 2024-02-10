@@ -19,6 +19,7 @@
 #include "Viper/Input/Input.h"
 #include "Viper/Input/Keycodes.h"
 #include "Viper/Input/MouseButtonCodes.h"
+#include "Viper/Input/JoystickManager.h"
 
 #include "Viper/Renderer/Renderer.h"
 #include "Viper/Renderer/Shader.h"

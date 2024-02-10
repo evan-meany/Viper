@@ -4,6 +4,14 @@
 
 namespace Viper {
 
+	struct JoystickData
+	{
+		float LeftStickX;
+		float LeftStickY;
+		float RightStickX;
+		float RightStickY;
+	};
+
 	class VIPER_API Input
 	{
 	public:
@@ -13,6 +21,7 @@ namespace Viper {
 		inline static float GetMouseX() { return s_Instance->GetMouseXImpl(); }
 		inline static float GetMouseY() { return s_Instance->GetMouseYImpl(); }
 		inline static void HideCursor(bool hide = true) { s_Instance->HideCursorImpl(hide); }
+		inline static JoystickData GetJoystickData(int joystickID) { return s_Instance->GetJoystickDataImpl(joystickID);  }
 
 	protected:
 		virtual bool IsKeyPressedImpl(int keycode) = 0;
@@ -21,6 +30,7 @@ namespace Viper {
 		virtual float GetMouseXImpl() = 0;
 		virtual float GetMouseYImpl() = 0;
 		virtual void HideCursorImpl(bool hide) = 0;
+		virtual JoystickData GetJoystickDataImpl(int joystickID) = 0;
 
 	private:
 		static Input* s_Instance;

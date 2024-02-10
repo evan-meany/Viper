@@ -80,7 +80,6 @@ public:
 		{
 			m_CameraController.OnUpdate(timestep);
 		}
-
 		if (Viper::Input::IsKeyPressed(VP_KEY_LEFT)) { m_SquarePosition.x -= m_SquarePositionSpeed * timestep; }
 		if (Viper::Input::IsKeyPressed(VP_KEY_RIGHT)) { m_SquarePosition.x += m_SquarePositionSpeed * timestep; }
 		if (Viper::Input::IsKeyPressed(VP_KEY_DOWN)) { m_SquarePosition.y -= m_SquarePositionSpeed * timestep; }
