@@ -28,12 +28,14 @@ namespace Viper
 		inline static Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }
 	private:
-		bool OnWindowClose(WindowCloseEvent& evnt);
+		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 	private:
 		Unique<Window> m_Window;
 		Unique<JoystickManager> m_JoystickManager;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
+		bool m_Minimized = false;
 		LayerStack m_LayerStack;
 		float m_LastFrameTime = 0.0f;
 

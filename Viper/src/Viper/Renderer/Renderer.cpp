@@ -41,4 +41,11 @@ namespace Viper {
 		RenderCommand::DrawIndexed(vertexArray);
 	}
 
+	void Renderer::OnWindowResize(uint32_t width, uint32_t height)
+	{
+		// TODO: if there are multiple Viewports this will need to be changed
+		// will also need to be reworked with addition of frame buffers
+		RenderCommand::SetViewport(0, 0, width, height);
+	}
+
 }

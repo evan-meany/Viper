@@ -14,7 +14,6 @@ namespace Viper {
 
 	void OrthographicCameraController::OnUpdate(Timestep timestep)
 	{
-		VP_TRACE("Camera rotation: {0}", m_CameraRotation);
 		if (m_Rotation)
 		{
 			if (Viper::Input::IsKeyPressed(VP_KEY_A))

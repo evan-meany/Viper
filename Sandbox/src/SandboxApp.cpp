@@ -9,7 +9,7 @@ public:
 	ExampleLayer(float aspectRatio) 
 		: Layer("Example"), m_CameraController(aspectRatio)
 	{
-		Viper::Input::HideCursor();
+		//Viper::Input::HideCursor();
 
 		//////////////////
 		// Triangle shader
@@ -151,8 +151,8 @@ private:
 	Viper::Shared<Viper::Texture2D> m_LogoTexture;
 
 	bool m_CameraOn = true;
-	Viper::CameraController m_CameraController;
-	//Viper::OrthographicCameraController m_CameraController;
+	//Viper::CameraController m_CameraController;
+	Viper::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquarePosition = glm::vec3(0.5f);
 	float m_SquarePositionSpeed = 1.0f;

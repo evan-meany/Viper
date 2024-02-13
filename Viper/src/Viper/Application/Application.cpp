@@ -66,6 +66,7 @@ namespace Viper {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(VP_BIND_EVENT_FUNC(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(VP_BIND_EVENT_FUNC(Application::OnWindowResize));
 
 		// Handle layer events from front to back
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
@@ -87,9 +88,23 @@ namespace Viper {
 		overlay->OnAttach();
 	}
 
-	bool Application::OnWindowClose(WindowCloseEvent& evnt)
+	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{
 		m_Running = false;
+		return true;
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		if (e.GetWidth() == 0.0f || e.GetHeight() == 0.0f) 
+		{ 
+			m_Minimized = true;
+			return false; 
+		}
+		m_Minimized = false;
+
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+
 		return true;
 	}
 
