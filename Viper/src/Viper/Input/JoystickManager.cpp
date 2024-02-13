@@ -8,7 +8,7 @@ namespace Viper {
 
 	void JoystickManager::Create()
 	{
-#ifdef _WIN32
+#ifdef VP_PLATFORM_WINDOWS
 		s_Instance = std::make_unique<WindowsJoystickManager>();
 		return;
 #endif

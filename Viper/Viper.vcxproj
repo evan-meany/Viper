@@ -76,7 +76,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>vppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;VP_PLATFORM_WINDOWS;VP_BUILD_DLL;GLFW_INCLUDE_NONE;VP_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;VP_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -96,7 +96,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>vppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;VP_PLATFORM_WINDOWS;VP_BUILD_DLL;GLFW_INCLUDE_NONE;VP_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;VP_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -120,7 +120,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>vppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;VP_PLATFORM_WINDOWS;VP_BUILD_DLL;GLFW_INCLUDE_NONE;VP_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;VP_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -146,36 +146,36 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Viper\GLFW\GLFWManager.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsJoystickManager.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsJoystickManager.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Viper.h" />
     <ClInclude Include="src\Viper\Application\Application.h" />
     <ClInclude Include="src\Viper\Application\Window.h" />
     <ClInclude Include="src\Viper\Camera\Camera.h" />
     <ClInclude Include="src\Viper\Camera\CameraController.h" />
+    <ClInclude Include="src\Viper\Camera\OrthographicCamera.h" />
+    <ClInclude Include="src\Viper\Camera\OrthographicCameraController.h" />
     <ClInclude Include="src\Viper\Core\Core.h" />
     <ClInclude Include="src\Viper\Core\Timestep.h" />
-    <ClInclude Include="src\Viper\EntryPoint.h" />
+    <ClInclude Include="src\Viper\Core\EntryPoint.h" />
     <ClInclude Include="src\Viper\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Viper\Events\JoystickEvent.h" />
     <ClInclude Include="src\Viper\Events\Event.h" />
+    <ClInclude Include="src\Viper\Events\JoystickEvent.h" />
     <ClInclude Include="src\Viper\Events\KeyEvent.h" />
     <ClInclude Include="src\Viper\Events\MouseEvent.h" />
+    <ClInclude Include="src\Viper\GLFW\GLFWManager.h" />
     <ClInclude Include="src\Viper\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Viper\Input\Input.h" />
     <ClInclude Include="src\Viper\Input\JoystickCodes.h" />
     <ClInclude Include="src\Viper\Input\JoystickManager.h" />
-    <ClInclude Include="src\Viper\Input\Input.h" />
     <ClInclude Include="src\Viper\Input\Keycodes.h" />
     <ClInclude Include="src\Viper\Input\MouseButtonCodes.h" />
     <ClInclude Include="src\Viper\Layer\Layer.h" />
     <ClInclude Include="src\Viper\Layer\LayerStack.h" />
     <ClInclude Include="src\Viper\Log\Log.h" />
-    <ClInclude Include="src\Viper\Camera\OrthographicCameraController.h" />
     <ClInclude Include="src\Viper\Renderer\Buffer.h" />
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Viper\Camera\OrthographicCamera.h" />
     <ClInclude Include="src\Viper\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Viper\Renderer\Renderer.h" />
     <ClInclude Include="src\Viper\Renderer\RendererAPI.h" />
@@ -603,21 +603,22 @@
     <ClInclude Include="vendor\stb\stb_image_write.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Viper\GLFW\GLFWManager.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsJoystickManager.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsJoystickManager.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Viper\Application\Application.cpp" />
     <ClCompile Include="src\Viper\Application\Window.cpp" />
     <ClCompile Include="src\Viper\Camera\Camera.cpp" />
     <ClCompile Include="src\Viper\Camera\CameraController.cpp" />
+    <ClCompile Include="src\Viper\Camera\OrthographicCamera.cpp" />
     <ClCompile Include="src\Viper\Camera\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Viper\GLFW\GLFWManager.cpp" />
     <ClCompile Include="src\Viper\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Viper\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Viper\Input\JoystickManager.cpp" />
@@ -625,7 +626,6 @@
     <ClCompile Include="src\Viper\Layer\LayerStack.cpp" />
     <ClCompile Include="src\Viper\Log\Log.cpp" />
     <ClCompile Include="src\Viper\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Viper\Camera\OrthographicCamera.cpp" />
     <ClCompile Include="src\Viper\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Viper\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Viper\Renderer\RendererAPI.cpp" />

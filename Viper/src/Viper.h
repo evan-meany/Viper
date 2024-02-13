@@ -26,5 +26,3 @@
 #include "Viper/Renderer/Texture.h"
 #include "Viper/Renderer/Buffer.h"
 #include "Viper/Renderer/VertexArray.h"
-
-#include "Viper/EntryPoint.h"

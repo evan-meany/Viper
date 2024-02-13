@@ -8,7 +8,7 @@
 
 namespace Viper
 {
-	class VIPER_API Log
+	class  Log
 	{
 	public:
 		static void Init();

@@ -1,7 +1,10 @@
 #include <Viper.h>
+#include <Viper/Core/EntryPoint.h>
 #include <imgui.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include "Sandbox2D.h"
 
 class ExampleLayer : public Viper::Layer
 {
@@ -165,7 +168,8 @@ class Sandbox : public Viper::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer(GetWindow().AspectRatio()));
+		//PushLayer(new ExampleLayer(GetWindow().AspectRatio()));
+		PushLayer(new Sandbox2D());
 		// ImGuiLayer automatically added
 	}
 

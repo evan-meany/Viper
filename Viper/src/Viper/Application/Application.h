@@ -12,7 +12,7 @@
 
 namespace Viper
 {
-	class VIPER_API Application
+	class  Application
 	{
 	public:
 		Application();

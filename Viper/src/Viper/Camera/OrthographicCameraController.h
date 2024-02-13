@@ -13,7 +13,7 @@ namespace Viper {
 	class OrthographicCameraController
 	{
 	public:
-		OrthographicCameraController(float aspectRatio, bool rotation = false);
+		OrthographicCameraController(float aspectRatio = 16.0f / 9.0f, bool rotation = false);
 		void OnUpdate(Timestep timestep);
 		void OnEvent(Event& e);
 		OrthographicCamera& GetCamera() { return m_Camera; }

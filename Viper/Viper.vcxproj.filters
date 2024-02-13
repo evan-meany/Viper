@@ -19,11 +19,17 @@
     <Filter Include="src\Viper\Application">
       <UniqueIdentifier>{4556EE0B-B1C2-A906-7AB6-4164E6E1CB6E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Viper\Camera">
+      <UniqueIdentifier>{BA95E744-A68E-0697-CFC0-EB1BBB18E6A2}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Viper\Core">
       <UniqueIdentifier>{1AED3758-06BB-2B5E-EF4E-9C84DBBB07C3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Viper\Events">
       <UniqueIdentifier>{26AD094B-12A6-289D-3BD8-0D22273008A9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Viper\GLFW">
+      <UniqueIdentifier>{01843958-ED51-2D5E-D6E5-9D84C25209C3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Viper\ImGui">
       <UniqueIdentifier>{2C56A05F-98E1-0D24-A1F2-90180DFD6924}</UniqueIdentifier>
@@ -87,6 +93,9 @@
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsJoystickManager.h">
+      <Filter>src\Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -99,13 +108,25 @@
     <ClInclude Include="src\Viper\Application\Window.h">
       <Filter>src\Viper\Application</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\Camera\Camera.h">
+      <Filter>src\Viper\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Camera\CameraController.h">
+      <Filter>src\Viper\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Camera\OrthographicCamera.h">
+      <Filter>src\Viper\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Camera\OrthographicCameraController.h">
+      <Filter>src\Viper\Camera</Filter>
+    </ClInclude>
     <ClInclude Include="src\Viper\Core\Core.h">
       <Filter>src\Viper\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Core\Timestep.h">
       <Filter>src\Viper\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Viper\EntryPoint.h">
+    <ClInclude Include="src\Viper\Core\EntryPoint.h">
       <Filter>src\Viper</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Events\ApplicationEvent.h">
@@ -114,16 +135,28 @@
     <ClInclude Include="src\Viper\Events\Event.h">
       <Filter>src\Viper\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\Events\JoystickEvent.h">
+      <Filter>src\Viper\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Viper\Events\KeyEvent.h">
       <Filter>src\Viper\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Events\MouseEvent.h">
       <Filter>src\Viper\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\GLFW\GLFWManager.h">
+      <Filter>src\Viper\GLFW</Filter>
+    </ClInclude>
     <ClInclude Include="src\Viper\ImGui\ImGuiLayer.h">
       <Filter>src\Viper\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Input\Input.h">
+      <Filter>src\Viper\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Input\JoystickCodes.h">
+      <Filter>src\Viper\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Viper\Input\JoystickManager.h">
       <Filter>src\Viper\Input</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Input\Keycodes.h">
@@ -145,9 +178,6 @@
       <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Renderer\GraphicsContext.h">
-      <Filter>src\Viper\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Viper\Camera\OrthographicCamera.h">
       <Filter>src\Viper\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Viper\Renderer\RenderCommand.h">
@@ -1422,15 +1452,9 @@
     <ClInclude Include="vendor\stb\stb_image.h">
       <Filter>vendor\stb</Filter>
     </ClInclude>
-    <ClInclude Include="vendor\stb\stb_image_write.h" />
-    <ClInclude Include="src\Viper\Camera\OrthographicCameraController.h" />
-    <ClInclude Include="src\Viper\Camera\Camera.h" />
-    <ClInclude Include="src\Viper\Camera\CameraController.h" />
-    <ClInclude Include="src\Viper\Input\JoystickCodes.h" />
-    <ClInclude Include="src\Viper\Events\JoystickEvent.h" />
-    <ClInclude Include="src\Viper\Input\JoystickManager.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsJoystickManager.h" />
-    <ClInclude Include="src\Viper\GLFW\GLFWManager.h" />
+    <ClInclude Include="vendor\stb\stb_image_write.h">
+      <Filter>vendor\stb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1454,17 +1478,41 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsJoystickManager.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Application\Application.cpp">
       <Filter>src\Viper\Application</Filter>
     </ClCompile>
+    <ClCompile Include="src\Viper\Application\Window.cpp">
+      <Filter>src\Viper\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Camera\Camera.cpp">
+      <Filter>src\Viper\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Camera\CameraController.cpp">
+      <Filter>src\Viper\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Camera\OrthographicCamera.cpp">
+      <Filter>src\Viper\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Camera\OrthographicCameraController.cpp">
+      <Filter>src\Viper\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\GLFW\GLFWManager.cpp">
+      <Filter>src\Viper\GLFW</Filter>
+    </ClCompile>
     <ClCompile Include="src\Viper\ImGui\ImGuiBuild.cpp">
       <Filter>src\Viper\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\ImGui\ImGuiLayer.cpp">
       <Filter>src\Viper\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Viper\Input\JoystickManager.cpp">
+      <Filter>src\Viper\Input</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Layer\Layer.cpp">
       <Filter>src\Viper\Layer</Filter>
@@ -1476,9 +1524,6 @@
       <Filter>src\Viper\Log</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Renderer\Buffer.cpp">
-      <Filter>src\Viper\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Viper\Camera\OrthographicCamera.cpp">
       <Filter>src\Viper\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Viper\Renderer\RenderCommand.cpp">
@@ -1505,12 +1550,5 @@
     <ClCompile Include="vendor\stb\stb.cpp">
       <Filter>vendor\stb</Filter>
     </ClCompile>
-    <ClCompile Include="src\Viper\Camera\OrthographicCameraController.cpp" />
-    <ClCompile Include="src\Viper\Camera\Camera.cpp" />
-    <ClCompile Include="src\Viper\Camera\CameraController.cpp" />
-    <ClCompile Include="src\Viper\Application\Window.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsJoystickManager.cpp" />
-    <ClCompile Include="src\Viper\GLFW\GLFWManager.cpp" />
-    <ClCompile Include="src\Viper\Input\JoystickManager.cpp" />
   </ItemGroup>
 </Project>

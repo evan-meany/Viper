@@ -4,7 +4,7 @@
 
 namespace Viper {
 
-	class VIPER_API LayerStack
+	class  LayerStack
 	{
 	public:
 		LayerStack();

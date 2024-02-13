@@ -22,7 +22,7 @@ namespace Viper {
 
 	};
 
-	class VIPER_API Window
+	class  Window
 	{
 	public:
 

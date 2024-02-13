@@ -21,6 +21,12 @@ namespace Viper {
 		VP_CORE_INFO("OpenGL Renderer: {0}", reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
 		VP_CORE_INFO("OpenGL Vendor: {0}", reinterpret_cast<const char*>(glGetString(GL_VENDOR)));
 		VP_CORE_INFO("OpenGL Version: {0}", reinterpret_cast<const char*>(glGetString(GL_VERSION)));
+
+		int versionMajor, versionMinor;
+		glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
+		glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
+		VP_CORE_ASSERT(versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5), 
+					   "Viper requires at least OpenGL version 4.5");
 	}
 
 	void OpenGLContext::SwapBuffers()

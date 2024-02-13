@@ -4,7 +4,7 @@
 #include "Event.h"
 
 namespace Viper {
-	class VIPER_API MouseButtonEvent : public Event
+	class  MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -17,7 +17,7 @@ namespace Viper {
 		int m_Button;
 	};
 
-	class VIPER_API MouseButtonPressedEvent : public MouseButtonEvent
+	class  MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
@@ -32,7 +32,7 @@ namespace Viper {
 		EVENT_CLASS_TYPE(MouseButtonPressed);
 	};
 
-	class VIPER_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class  MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}
@@ -47,7 +47,7 @@ namespace Viper {
 		EVENT_CLASS_TYPE(MouseButtonReleased);
 	};
 
-	class VIPER_API MouseMovedEvent : public Event
+	class  MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -70,7 +70,7 @@ namespace Viper {
 		float m_MouseX, m_MouseY;
 	};
 
-	class VIPER_API MouseScrolledEvent : public Event
+	class  MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset) : m_OffsetX(xOffset), m_OffsetY(yOffset)

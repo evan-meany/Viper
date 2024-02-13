@@ -6,7 +6,7 @@ namespace Viper {
 
 	Unique<Window> Window::Create(const WindowProps& props)
 	{
-#ifdef _WIN32
+#ifdef VP_PLATFORM_WINDOWS
 		return std::make_unique<WindowsWindow>(props);
 #endif
 

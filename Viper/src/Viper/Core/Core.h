@@ -2,18 +2,14 @@
 
 #include <memory>
 
-#ifdef VP_PLATFORM_WINDOWS
-#if VP_DYNAMIC_LINK
-	#ifdef VP_BUILD_DLL
-		#define VIPER_API __declspec(dllexport)
+#ifdef _WIN32
+	#ifdef _WIN64
+		#define VP_PLATFORM_WINDOWS
 	#else
-		#define VIPER_API __declspec(dllimport)
+		#error "Viper does not support x86"
 	#endif
 #else
-	#define VIPER_API
-#endif
-#else
-	#error Viper only supports Windows
+	#error "Viper only suports Windows"
 #endif
 
 #ifdef VP_DEBUG

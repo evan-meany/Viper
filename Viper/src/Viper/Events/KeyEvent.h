@@ -4,7 +4,7 @@
 
 namespace Viper {
 
-	class VIPER_API KeyEvent : public Event
+	class  KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -16,7 +16,7 @@ namespace Viper {
 		int m_KeyCode;
 	};
 
-	class VIPER_API KeyPressedEvent : public KeyEvent
+	class  KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -37,7 +37,7 @@ namespace Viper {
 		int m_RepeatCount;
 	};
 	
-	class VIPER_API KeyTypedEvent : public KeyEvent
+	class  KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode)
@@ -53,7 +53,7 @@ namespace Viper {
 		EVENT_CLASS_TYPE(KeyTyped);
 	};
 
-	class VIPER_API KeyReleasedEvent : public KeyEvent
+	class  KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}

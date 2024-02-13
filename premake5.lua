@@ -77,8 +77,6 @@ project "Viper"
 
 		defines
 		{
-			"VP_PLATFORM_WINDOWS",
-			"VP_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
 
@@ -131,7 +129,6 @@ project "Sandbox"
 
 		defines
 		{
-			"VP_PLATFORM_WINDOWS",
 		}
 
 	filter "configurations:Debug"
