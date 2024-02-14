@@ -29,7 +29,7 @@ namespace Viper {
 		VP_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
 		// Initialize GLFW if not already initialized
-		if (!GLFWManager::Get()) { GLFWManager::Init(); }
+		GLFWManager::Init();
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		

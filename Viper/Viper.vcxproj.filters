@@ -1455,6 +1455,7 @@
     <ClInclude Include="vendor\stb\stb_image_write.h">
       <Filter>vendor\stb</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viper\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1550,5 +1551,6 @@
     <ClCompile Include="vendor\stb\stb.cpp">
       <Filter>vendor\stb</Filter>
     </ClCompile>
+    <ClCompile Include="src\Viper\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

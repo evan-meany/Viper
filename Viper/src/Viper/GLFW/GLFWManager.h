@@ -8,6 +8,7 @@ namespace Viper {
 	public:
 		static void Init();
 		static void OnUpdate();
+		// TODO: change this to Unique probably
 		static Shared<GLFWManager> Get() { return s_Instance; }
 	private:
 		static Shared<GLFWManager> s_Instance;

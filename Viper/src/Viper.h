@@ -22,6 +22,7 @@
 #include "Viper/Input/JoystickManager.h"
 
 #include "Viper/Renderer/Renderer.h"
+#include "Viper/Renderer/Renderer2D.h"
 #include "Viper/Renderer/Shader.h"
 #include "Viper/Renderer/Texture.h"
 #include "Viper/Renderer/Buffer.h"

@@ -12,7 +12,7 @@ namespace Viper {
 	WindowsJoystickManager::WindowsJoystickManager()
 	{
 		// Initialize GLFW if not already initialized
-		if (!GLFWManager::Get()) { GLFWManager::Init(); }
+		GLFWManager::Init();
 
 		if (!s_Data) { s_Data = std::make_unique<ControllerData>(); }
 		
