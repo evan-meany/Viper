@@ -18,7 +18,7 @@ namespace Viper {
 			int success = glfwInit();
 			VP_CORE_ASSERT(success, "Could not initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
-			s_Instance = std::make_shared<GLFWManager>();
+			s_Instance = MakeShared<GLFWManager>();
 		}
 	}
 

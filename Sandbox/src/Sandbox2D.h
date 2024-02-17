@@ -16,8 +16,7 @@ private:
 	Viper::OrthographicCameraController m_CameraController;
 
 	// Below will be in 2D Renderer
-	Viper::Shared<Viper::Shader> m_Shader;
-	Viper::Shared<Viper::VertexArray> m_VertexArray;
+	Viper::Shared<Viper::Texture2D> m_Texture;
 
 	glm::vec4 m_Color;
 };

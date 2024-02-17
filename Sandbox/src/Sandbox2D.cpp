@@ -6,6 +6,7 @@
 Sandbox2D::Sandbox2D()
 	: Layer("Sandbox2D"), m_CameraController(), m_Color(1.0f, 0.0f, 1.0f, 1.0f)
 {
+	m_Texture = Viper::Texture2D::Create("assets/textures/Clefairy.png");
 }
 
 void Sandbox2D::OnAttach()
@@ -33,7 +34,9 @@ void Sandbox2D::OnUpdate(Viper::Timestep timestep)
 	Viper::RenderCommand::Clear();
 
 	Viper::Renderer2D::BeginScene(m_CameraController.GetCamera());
+	Viper::Renderer2D::DrawQuad({0.0f, 0.0f, 0.1f}, { 0.5f, 0.5f }, *m_Texture);
 	Viper::Renderer2D::DrawQuad({0.0f, 0.0f}, { 1.0f, 1.0f }, m_Color);
+	Viper::Renderer2D::DrawQuad({1.0f, 1.0f}, { 1.0f, 1.0f }, m_Color);
 	Viper::Renderer2D::EndScene();
 }
 

@@ -12,7 +12,7 @@ namespace Viper {
 			VP_CORE_ASSERT(false, "RendererAPI cannot be None");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLVertexArray>();
+			return MakeShared<OpenGLVertexArray>();
 		}
 
 		VP_CORE_ASSERT(false, "VertexArray should not be nullptr");

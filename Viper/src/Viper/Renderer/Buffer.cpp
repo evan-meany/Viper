@@ -13,7 +13,7 @@ namespace Viper {
 			VP_CORE_ASSERT(false, "RendererAPI cannot be None");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLVertexBuffer>(vertices, size);
+			return MakeShared<OpenGLVertexBuffer>(vertices, size);
 		}
 
 		VP_CORE_ASSERT(false, "VertexBuffer should not be nullptr");
@@ -28,7 +28,7 @@ namespace Viper {
 			VP_CORE_ASSERT(false, "RendererAPI cannot be None");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLIndexBuffer>(indices, size);
+			return MakeShared<OpenGLIndexBuffer>(indices, size);
 		}
 
 		VP_CORE_ASSERT(false, "IndexBuffer should not be nullptr");

@@ -15,7 +15,6 @@ namespace Viper {
 		virtual const std::string& GetName() const = 0;
 
 		// TODO: instead of uniform upload a material
-		// TODO: change UploadUniform to Set() or Upload() because DX doesn't use uniforms
 		virtual void UploadUniform(const std::string& name, int uniform) = 0;
 		virtual void UploadUniform(const std::string& name, float uniform) = 0;
 		virtual void UploadUniform(const std::string& name, const glm::vec2& uniform) = 0;

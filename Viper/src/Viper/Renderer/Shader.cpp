@@ -13,7 +13,7 @@ namespace Viper {
 			VP_CORE_ASSERT(false, "RendererAPI cannot be None");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLShader>(path);
+			return MakeShared<OpenGLShader>(path);
 		}
 
 		VP_CORE_ASSERT(false, "OpenGLShader should not be nullptr");
@@ -30,7 +30,7 @@ namespace Viper {
 			VP_CORE_ASSERT(false, "RendererAPI cannot be None");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLShader>(name, vertexSource, fragmentSource);
+			return MakeShared<OpenGLShader>(name, vertexSource, fragmentSource);
 		}
 		
 		VP_CORE_ASSERT(false, "OpenGLShader should not be nullptr");
