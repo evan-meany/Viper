@@ -18,23 +18,23 @@ namespace Viper {
 		{
 			if (Viper::Input::IsKeyPressed(VP_KEY_A))
 			{
-				m_CameraPosition.x -= glm::cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * timestep;
-				m_CameraPosition.y -= glm::sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * timestep;
+				m_CameraPosition.x -= glm::cos(m_CameraRotation) * m_CameraTranslationSpeed * timestep;
+				m_CameraPosition.y -= glm::sin(m_CameraRotation) * m_CameraTranslationSpeed * timestep;
 			}
 			if (Viper::Input::IsKeyPressed(VP_KEY_D))
 			{
-				m_CameraPosition.x += glm::cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * timestep;
-				m_CameraPosition.y += glm::sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * timestep;
+				m_CameraPosition.x += glm::cos(m_CameraRotation) * m_CameraTranslationSpeed * timestep;
+				m_CameraPosition.y += glm::sin(m_CameraRotation) * m_CameraTranslationSpeed * timestep;
 			}
 			if (Viper::Input::IsKeyPressed(VP_KEY_W))
 			{
-				m_CameraPosition.y += glm::cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * timestep;
-				m_CameraPosition.x -= glm::sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * timestep;
+				m_CameraPosition.y += glm::cos(m_CameraRotation) * m_CameraTranslationSpeed * timestep;
+				m_CameraPosition.x -= glm::sin(m_CameraRotation) * m_CameraTranslationSpeed * timestep;
 			}
 			if (Viper::Input::IsKeyPressed(VP_KEY_S))
 			{
-				m_CameraPosition.y -= glm::cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * timestep;
-				m_CameraPosition.x += glm::sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * timestep;
+				m_CameraPosition.y -= glm::cos(m_CameraRotation) * m_CameraTranslationSpeed * timestep;
+				m_CameraPosition.x += glm::sin(m_CameraRotation) * m_CameraTranslationSpeed * timestep;
 			}
 			if (Viper::Input::IsKeyPressed(VP_KEY_Q))
 			{
@@ -44,8 +44,6 @@ namespace Viper {
 			{
 				m_CameraRotation += m_CameraRotationSpeed * timestep;
 			}
-			if (m_CameraRotation > 360.0f) { m_CameraRotation = 0.0; }
-			if (m_CameraRotation < 0.0f) { m_CameraRotation = 360.0f; }
 		}
 		else
 		{
@@ -63,7 +61,7 @@ namespace Viper {
 			}
 			if (Viper::Input::IsKeyPressed(VP_KEY_S))
 			{
-				m_CameraPosition.y -= glm::cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * timestep;
+				m_CameraPosition.y -= m_CameraTranslationSpeed * timestep;
 			}
 		}
 		if (Viper::Input::IsKeyPressed(VP_KEY_T)) 

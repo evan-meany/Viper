@@ -18,6 +18,7 @@ namespace Viper {
 		void OnEvent(Event& e);
 		OrthographicCamera& GetCamera() { return m_Camera; }
 		const OrthographicCamera& GetCamera() const { return m_Camera; }
+		void SetRotation(bool rotation) { m_Rotation = rotation; }
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e);
@@ -26,6 +27,7 @@ namespace Viper {
 		float m_ZoomLevel = 1.0f;
 		OrthographicCamera m_Camera;
 
+		// This position in the absolute position in the world
 		glm::vec3 m_CameraPosition = glm::vec3(0.0f);
 		float m_CameraTranslationSpeed = m_ZoomLevel;
 

@@ -6,6 +6,7 @@
 Sandbox2D::Sandbox2D()
 	: Layer("Sandbox2D"), m_CameraController(), m_Color(1.0f, 0.0f, 1.0f, 1.0f)
 {
+	m_CameraController.SetRotation(true);
 	m_Texture = Viper::Texture2D::Create("assets/textures/Clefairy.png");
 }
 
